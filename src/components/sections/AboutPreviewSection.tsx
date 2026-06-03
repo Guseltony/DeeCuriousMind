@@ -53,6 +53,7 @@ export default function AboutPreviewSection() {
               src="/images/denise_childcare.png"
               alt="Denise - Founder of Dee's Curious Minds"
               fill
+              sizes="(max-w-7xl) 100vw, 50vw"
               className="object-cover"
             />
           </div>
