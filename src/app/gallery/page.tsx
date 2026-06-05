@@ -4,12 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import GalleryHero from "@/components/sections/gallery/GalleryHero";
-import GalleryIntro from "@/components/sections/gallery/GalleryIntro";
 import GalleryMasonry from "@/components/sections/gallery/GalleryMasonry";
-import EnvironmentSpaces from "@/components/sections/gallery/EnvironmentSpaces";
-import ActivityHighlights from "@/components/sections/gallery/ActivityHighlights";
-import GalleryTimeline from "@/components/sections/gallery/GalleryTimeline";
-import WhyEnvironmentMatters from "@/components/sections/gallery/WhyEnvironmentMatters";
 import GalleryCta from "@/components/sections/gallery/GalleryCta";
 
 export const metadata: Metadata = {
@@ -43,25 +38,10 @@ export default function GalleryPage() {
         {/* 1. Gallery Hero Section */}
         <GalleryHero />
 
-        {/* 2. Environment Introduction */}
-        <GalleryIntro />
-
-        {/* 3. Filtering Gallery Masonry Grid */}
+        {/* 2. Filtering Gallery Masonry Grid */}
         <GalleryMasonry />
 
-        {/* 4. Individual Environment Space Details */}
-        <EnvironmentSpaces />
-
-        {/* 5. Daily Curriculum Activity Highlights */}
-        <ActivityHighlights />
-
-        {/* 6. Typical Day Journey Timeline */}
-        <GalleryTimeline />
-
-        {/* 7. Why Environment Matters Philosophy */}
-        <WhyEnvironmentMatters />
-
-        {/* 8. Final CTA Call To Action */}
+        {/* 3. Final CTA Call To Action */}
         <GalleryCta />
       </main>
 
