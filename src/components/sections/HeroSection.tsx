@@ -8,10 +8,10 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[50vh] lg:min-h-[55vh] flex items-center pt-20 lg:pt-24 pb-14 md:pb-16 px-4 sm:px-6 md:px-8 lg:px-12 w-full bg-gradient-to-br from-[#738249] via-[#5F6C37] to-[#4E582D] overflow-hidden">
-      {/* Decorative blobs & background elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -z-10 translate-x-20 -translate-y-20" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl -z-10 -translate-x-20 translate-y-20" />
+    <section
+      className="relative min-h-[50vh] lg:min-h-[55vh] flex items-center pt-20 lg:pt-24 pb-14 md:pb-16 px-4 sm:px-6 md:px-8 lg:px-12 w-full bg-[#5F6C37] overflow-hidden"
+      style={{ backgroundImage: 'url("/svg/blob-scene-haikei.svg")', backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
       
       {/* Playful background doodles (drawings) */}
       <div className="absolute top-20 left-10 text-white/10 select-none hidden md:block text-2xl font-poppins">★</div>
@@ -147,14 +147,14 @@ export default function HeroSection() {
       {/* Playful Cloud/Wave Divider at the Bottom */}
       <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
         <svg
-          viewBox="0 0 1440 74"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 900 600"
+          width="100%"
+          height="100%"
           className="relative block w-full h-[60px] md:h-[90px]"
           preserveAspectRatio="none"
         >
           <path
-            d="M0,32 C240,74 480,74 720,32 C960,-10 1200,-10 1440,32 L1440,74 L0,74 Z"
+            d="M0 471L8.8 482.7C17.7 494.3 35.3 517.7 53 518.8C70.7 520 88.3 499 106 490.5C123.7 482 141.3 486 159 493.2C176.7 500.3 194.3 510.7 212 518.3C229.7 526 247.3 531 265 529C282.7 527 300.3 518 318 506.5C335.7 495 353.3 481 371 487.2C388.7 493.3 406.3 519.7 423.8 523C441.3 526.3 458.7 506.7 476.2 507.7C493.7 508.7 511.3 530.3 529 532.5C546.7 534.7 564.3 517.3 582 509.3C599.7 501.3 617.3 502.7 635 511.3C652.7 520 670.3 536 688 535.7C705.7 535.3 723.3 518.7 741 518.8C758.7 519 776.3 536 794 538.7C811.7 541.3 829.3 529.7 847 529.8C864.7 530 882.3 542 891.2 548L900 554L900 601L891.2 601C882.3 601 864.7 601 847 601C829.3 601 811.7 601 794 601C776.3 601 758.7 601 741 601C723.3 601 705.7 601 688 601C670.3 601 652.7 601 635 601C617.3 601 599.7 601 582 601C564.3 601 546.7 601 529 601C511.3 601 493.7 601 476.2 601C458.7 601 441.3 601 423.8 601C406.3 601 388.7 601 371 601C353.3 601 335.7 601 318 601C300.3 601 282.7 601 265 601C247.3 601 229.7 601 212 601C194.3 601 176.7 601 159 601C141.3 601 123.7 601 106 601C88.3 601 70.7 601 53 601C35.3 601 17.7 601 8.8 601L0 601Z"
             fill="#FFFFFF"
           />
         </svg>

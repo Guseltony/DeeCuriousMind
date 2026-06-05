@@ -10,7 +10,6 @@ import ServicesSection from "@/components/sections/ServicesSection";
 import LearningApproachSection from "@/components/sections/LearningApproachSection";
 import GalleryPreviewSection from "@/components/sections/GalleryPreviewSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import FaqSection from "@/components/sections/FaqSection";
 import ContactPreviewSection from "@/components/sections/ContactPreviewSection";
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Dee's Curious Minds | Premium Childcare & Childminding Gillingham",
-    description: "EYFS-aligned childcare and sensory play in a secure, nurturing home setting at 6 Merlin Way, Gillingham.",
+    description: "EYFS-aligned childcare and sensory play in a secure, nurturing home setting in Gillingham, Kent.",
     url: "https://deescuriousminds.co.uk",
     siteName: "Dee's Curious Minds",
     type: "website",
@@ -64,10 +63,7 @@ export default function Home() {
         {/* 7. Parent Testimonials Carousel */}
         <TestimonialsSection />
 
-        {/* 8. FAQ Accordion Grid */}
-        <FaqSection />
-
-        {/* 9. Contact Details & Inquiry Form */}
+        {/* 8. Contact Details & Inquiry Form */}
         <ContactPreviewSection />
       </div>
 

@@ -7,6 +7,7 @@ import { ArrowRight, CheckCircle2, BookOpen, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 import Section from "../shared/Section";
 import SectionHeading from "../shared/SectionHeading";
+import { getYearsOfExperience } from "@/utils/experience";
 
 export default function AboutPreviewSection() {
   return (
@@ -17,7 +18,7 @@ export default function AboutPreviewSection() {
           <path d="M0,0 L1440,0 L1440,40 C1080,15 720,15 360,40 L0,20 Z" fill="#FFFFFF" />
         </svg>
       </div>
-      
+
       <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
         <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
           <path d="M0,50 L1440,50 L1440,10 C1080,35 720,35 360,10 L0,30 Z" fill="#FFFFFF" />
@@ -50,17 +51,17 @@ export default function AboutPreviewSection() {
           {/* Main Photo Frame */}
           <div className="relative w-[300px] h-[360px] sm:w-[350px] sm:h-[420px] rounded-2xl overflow-hidden shadow-lg border-8 border-white rotate-[-3deg] hover:rotate-0 transition-transform duration-500 z-10">
             <Image
-              src="/images/denise_childcare.png"
+              src="/images/denise_childcare_corporate.png"
               alt="Denise - Founder of Dee's Curious Minds"
               fill
-              sizes="(max-w-7xl) 100vw, 50vw"
+              sizes="(max-width: 1280px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
 
           {/* Overlapping Stat Box: Experience */}
           <div className="absolute -right-4 top-12 bg-white px-5 py-3 rounded-2xl shadow-md border border-slate-100 flex flex-col items-center justify-center text-center z-20">
-            <span className="text-2xl font-extrabold text-primary font-poppins">10+</span>
+            <span className="text-2xl font-extrabold text-primary font-poppins">{getYearsOfExperience()}+</span>
             <span className="text-xs font-semibold text-text-secondary">Years Experience</span>
           </div>
 
