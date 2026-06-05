@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2, CheckCircle2, AlertCircle, Calendar, ShieldCheck, Clock, HelpCircle } from "lucide-react";
+import { Loader2, CheckCircle2, AlertCircle, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { sendContactInquiry } from "@/app/actions/contact";
 
@@ -18,6 +18,37 @@ const contactFormSchema = z.object({
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+const infoDetails = [
+  {
+    icon: Phone,
+    label: "Call Direct",
+    value: "07840066028",
+    href: "tel:07840066028",
+    color: "text-indigo-600 bg-indigo-50 border-indigo-100",
+  },
+  {
+    icon: Mail,
+    label: "Email Us",
+    value: "Deescuriousminds@gmail.com",
+    href: "mailto:Deescuriousminds@gmail.com",
+    color: "text-rose-600 bg-rose-50 border-rose-100",
+  },
+  {
+    icon: MapPin,
+    label: "Our Setting",
+    value: "Gillingham, Kent",
+    href: "https://maps.google.com/?q=Gillingham,+Kent",
+    color: "text-emerald-600 bg-emerald-50 border-emerald-100",
+  },
+  {
+    icon: Clock,
+    label: "Opening Hours",
+    value: "8:00 AM - 6:00 PM (Mon - Fri)",
+    href: null,
+    color: "text-amber-600 bg-amber-50 border-amber-100",
+  },
+];
 
 export default function ContactFormSection() {
   const [success, setSuccess] = useState(false);
@@ -56,16 +87,82 @@ export default function ContactFormSection() {
   };
 
   return (
-    <section className="py-10 md:py-16 px-6 md:px-8 lg:px-12 w-full bg-bg-light" id="contact-form">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <section className="relative min-h-[65vh] flex items-center pt-32 pb-12 lg:pt-40 lg:pb-14 px-4 sm:px-6 lg:px-8 w-full bg-gradient-to-br from-bg-light via-white to-primary/10 overflow-hidden text-left" id="contact-form">
+      {/* Decorative Blur Backgrounds */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10 translate-x-20 -translate-y-20" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10 -translate-x-20 translate-y-20" />
+
+      {/* Wave Divider at Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
+          <path d="M0,50 L1440,50 L1440,10 C1080,35 720,35 360,10 L0,30 Z" fill="#FFFFFF" />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl xl:max-w-[1360px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start relative z-10">
         
-        {/* Left Side: Form Column */}
+        {/* Left Column: Heading & Contact Info */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-2xl border border-slate-100 shadow-sm text-left"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="lg:col-span-5 space-y-6 text-left"
+        >
+          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-semibold tracking-wide uppercase">
+            Get in Touch
+          </span>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-text-primary leading-tight font-poppins">
+            Start Your Journey <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              With Denise Today
+            </span>
+          </h1>
+          <p className="text-sm md:text-base text-text-secondary font-inter max-w-xl leading-relaxed">
+            Have questions about our schedule, open slots, or curriculum? Contact Denise directly by submitting the form, calling, or writing to us.
+          </p>
+
+          {/* Contact Details List */}
+          <div className="space-y-4 pt-4">
+            {infoDetails.map((item, idx) => {
+              const Icon = item.icon;
+              const isLink = !!item.href;
+              return (
+                <div
+                  key={idx}
+                  className="flex items-center gap-4 bg-white p-4 rounded-2xl border-2 border-slate-100/60 shadow-sm transition-all duration-300 hover:shadow-md"
+                >
+                  <div className={`p-3 rounded-xl border shrink-0 ${item.color}`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-text-secondary font-inter font-semibold">{item.label}</p>
+                    {isLink && item.href ? (
+                      <a
+                        href={item.href}
+                        className="text-sm sm:text-base font-bold text-text-primary hover:text-primary transition-colors font-poppins"
+                        target={item.href.startsWith("http") ? "_blank" : undefined}
+                        rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-sm sm:text-base font-bold text-text-primary font-poppins">
+                        {item.value}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* Right Column: Inquiry Form */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+          className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border-2 border-slate-100 shadow-sm text-left w-full"
         >
           {success ? (
             /* Thank You / Success State */
@@ -246,67 +343,6 @@ export default function ContactFormSection() {
               </button>
             </form>
           )}
-        </motion.div>
-
-        {/* Right Side: Info Panel Column */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="lg:col-span-5 space-y-6 text-left"
-        >
-          {/* Box 1: Response Time */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4">
-            <div className="p-3 bg-indigo-50 text-primary rounded-xl shrink-0">
-              <Clock className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-base font-bold text-text-primary font-poppins">Expected Response Time</h4>
-              <p className="text-xs sm:text-sm text-text-secondary mt-1 font-inter leading-relaxed">
-                Denise reviews contact messages daily. You can expect a response within <strong className="font-semibold text-text-primary">24 hours</strong> on working days.
-              </p>
-            </div>
-          </div>
-
-          {/* Box 2: Visit Arrangements */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4">
-            <div className="p-3 bg-purple-50 text-secondary rounded-xl shrink-0">
-              <Calendar className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-base font-bold text-text-primary font-poppins">Visit Arrangements</h4>
-              <p className="text-xs sm:text-sm text-text-secondary mt-1 font-inter leading-relaxed">
-                Visits to our setting are by <strong className="font-semibold text-text-primary">prior appointment only</strong> (usually scheduled after-hours) to respect childcare groups and maintain a quiet, secure environment.
-              </p>
-            </div>
-          </div>
-
-          {/* Box 3: Open Slots Availability */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4">
-            <div className="p-3 bg-green-50 text-green-600 rounded-xl shrink-0">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-base font-bold text-text-primary font-poppins">Availability & Enrollment</h4>
-              <p className="text-xs sm:text-sm text-text-secondary mt-1 font-inter leading-relaxed">
-                We accept children from 6 months to 5 years. Slots are limited to maintain our low childminder-to-child ratios. Let us know your requirements early!
-              </p>
-            </div>
-          </div>
-
-          {/* Box 4: General Questions */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-4">
-            <div className="p-3 bg-amber-50 text-amber-600 rounded-xl shrink-0">
-              <HelpCircle className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-base font-bold text-text-primary font-poppins">General Questions</h4>
-              <p className="text-xs sm:text-sm text-text-secondary mt-1 font-inter leading-relaxed">
-                Feel free to ask about custom session lengths, billing, settling-in periods, or specific allergy accommodations.
-              </p>
-            </div>
-          </div>
         </motion.div>
 
       </div>
