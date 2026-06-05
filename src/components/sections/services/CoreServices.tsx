@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Heart, Gamepad2, Smile, TreePine, Palette, BookOpen, Check } from "lucide-react";
+import { Heart, TreePine, Palette, BookOpen, Award, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import Section from "../../shared/Section";
 import SectionHeading from "../../shared/SectionHeading";
@@ -9,51 +9,43 @@ import SectionHeading from "../../shared/SectionHeading";
 const coreServices = [
   {
     icon: Heart,
-    title: "Early Years Care",
-    description: "Nurturing care for infants and toddlers, matching home routines for sleeping, feeding, and comfort to ensure they feel safe.",
-    benefits: ["Cozy nap routines", "Healthy home-cooked meals", "Bilingual verbal support"],
-    color: "bg-indigo-50 text-indigo-600 border-indigo-100",
+    title: "Full-Time Daycare & Naps",
+    description: "Loving full-day care matching your child's home routines for feeding, nap time, and comfort, ensuring they feel secure and valued.",
+    benefits: ["Cozy nap routines", "Healthy home-cooked meals", "Flexible settling-in support"],
+    color: "bg-indigo-50 border-indigo-100 text-indigo-600",
     iconBg: "bg-indigo-500 text-white",
   },
   {
-    icon: Gamepad2,
-    title: "Learning Through Play",
-    description: "Child-led curiosity play supported by Montessori-style open-ended materials, wooden toys, and sensory discovery setups.",
-    benefits: ["Montessori wooden toys", "Cognitive problem solving", "Sensory exploring boxes"],
-    color: "bg-purple-50 text-purple-600 border-purple-100",
-    iconBg: "bg-purple-500 text-white",
-  },
-  {
-    icon: Smile,
-    title: "Social & Emotional Growth",
-    description: "Small group interactions designed to teach kids to name feelings, share toys, show empathy, and develop self-regulation.",
-    benefits: ["Cooperative play circles", "Basic mindfulness exercises", "Emotional vocabulary"],
-    color: "bg-green-50 text-green-600 border-green-100",
-    iconBg: "bg-green-500 text-white",
-  },
-  {
-    icon: TreePine,
-    title: "Outdoor Learning",
-    description: "Daily backyard play, nature walks, leaf collecting, and bug hunting to inspire a native love for the natural world and science.",
-    benefits: ["Secure private garden", "Planting & gardening", "Gross motor coordination"],
-    color: "bg-amber-50 text-amber-600 border-amber-100",
-    iconBg: "bg-amber-500 text-white",
-  },
-  {
-    icon: Palette,
-    title: "Creative Arts & Crafts",
-    description: "Hands-on process art including finger-painting, molding clay, simple baking preparation, and song sessions.",
-    benefits: ["Fine motor coordination", "Messy play tables", "Musical rhythms & rhymes"],
-    color: "bg-rose-50 text-rose-600 border-rose-100",
+    icon: BookOpen,
+    title: "Play-Based Reading & Phonics",
+    description: "Fun, story-centered activities and guided phonics designed to naturally build early vocabulary and meet milestones.",
+    benefits: ["Phonics & pre-writing", "Language tracking", "Bilingual communication support"],
+    color: "bg-rose-50 border-rose-100 text-rose-600",
     iconBg: "bg-rose-500 text-white",
   },
   {
-    icon: BookOpen,
-    title: "School Readiness",
-    description: "Pre-school milestones aligned with the EYFS framework, including guided phonics, simple numeracy, and self-help skills.",
-    benefits: ["Phonics & pre-writing", "Basic counting games", "Dressing & independence"],
-    color: "bg-teal-50 text-teal-600 border-teal-100",
-    iconBg: "bg-teal-500 text-white",
+    icon: Palette,
+    title: "Creative Arts & Messy Play",
+    description: "Process-driven art sessions including finger-painting, molding clay, simple baking, and musical circle games.",
+    benefits: ["Fine motor skills focus", "Sensory messy play tables", "Rhythms & nursery rhymes"],
+    color: "bg-violet-50 border-violet-100 text-violet-600",
+    iconBg: "bg-violet-500 text-white",
+  },
+  {
+    icon: TreePine,
+    title: "Sensory Nature Explorations",
+    description: "Daily backyard play, sensory planting, leaf collection walks, and insect watching to inspire a love of nature.",
+    benefits: ["Secure private garden", "Planting & gardening", "Gross motor activities"],
+    color: "bg-emerald-50 border-emerald-100 text-emerald-600",
+    iconBg: "bg-emerald-500 text-white",
+  },
+  {
+    icon: Award,
+    title: "EYFS School Readiness",
+    description: "Preschool milestones centered on early counting, structural games, and teaching practical independence.",
+    benefits: ["Simple counting games", "Self-dressing & toilet prep", "Emotional confidence"],
+    color: "bg-amber-50 border-amber-100 text-amber-600",
+    iconBg: "bg-amber-500 text-white",
   },
 ];
 
@@ -75,7 +67,7 @@ export default function CoreServices() {
 
       {/* Playful watermark doodles */}
       <div className="absolute top-20 right-10 text-primary/5 pointer-events-none -z-10 select-none">
-        <Gamepad2 className="w-16 h-16 md:w-20 md:h-20 rotate-12" />
+        <BookOpen className="w-16 h-16 md:w-20 md:h-20 rotate-12" />
       </div>
       <div className="absolute bottom-20 left-10 text-secondary/5 pointer-events-none -z-10 select-none">
         <Palette className="w-16 h-16 md:w-20 md:h-20 -rotate-12" />
@@ -87,7 +79,7 @@ export default function CoreServices() {
         badge="What We Provide"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto relative z-10">
+      <div className="flex flex-wrap justify-center gap-6 lg:gap-8 max-w-7xl xl:max-w-[1360px] mx-auto relative z-10 w-full">
         {coreServices.map((svc, idx) => {
           const IconComponent = svc.icon;
           return (
@@ -97,8 +89,8 @@ export default function CoreServices() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: idx * 0.05 }}
-              whileHover={{ y: -4, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.05)" }}
-              className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-100 shadow-sm flex flex-col justify-between text-left group transition-all duration-300"
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="bg-white rounded-3xl p-6 md:p-8 border-2 border-slate-100 shadow-sm flex flex-col justify-between text-left group transition-all duration-300 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)]"
             >
               <div className="space-y-6">
                 {/* Header: Icon & Title */}
@@ -138,3 +130,4 @@ export default function CoreServices() {
     </Section>
   );
 }
+

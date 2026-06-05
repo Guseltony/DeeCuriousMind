@@ -4,12 +4,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import ServicesHero from "@/components/sections/services/ServicesHero";
-import ServicesIntro from "@/components/sections/services/ServicesIntro";
 import CoreServices from "@/components/sections/services/CoreServices";
 import DailyActivities from "@/components/sections/services/DailyActivities";
-import LearningAreas from "@/components/sections/services/LearningAreas";
-import WhyChoose from "@/components/sections/services/WhyChoose";
-import LearningJourney from "@/components/sections/services/LearningJourney";
 import ServicesCta from "@/components/sections/services/ServicesCta";
 
 export const metadata: Metadata = {
@@ -44,25 +40,13 @@ export default function ServicesPage() {
         {/* 1. Services Hero Section */}
         <ServicesHero />
 
-        {/* 2. Services Overview Intro */}
-        <ServicesIntro />
-
-        {/* 3. Core Childcare Services Cards */}
+        {/* 2. Core Childcare Services Cards */}
         <CoreServices />
 
-        {/* 4. Typical Daily Routine Timeline */}
+        {/* 3. Typical Daily Routine Timeline */}
         <DailyActivities />
 
-        {/* 5. Specific Learning Areas Grid */}
-        <LearningAreas />
-
-        {/* 6. Why Parents Choose Us Features */}
-        <WhyChoose />
-
-        {/* 7. Child Progression Journey Pathway */}
-        <LearningJourney />
-
-        {/* 8. Final Call to Action */}
+        {/* 4. Final Call to Action */}
         <ServicesCta />
       </main>
 
@@ -74,3 +58,4 @@ export default function ServicesPage() {
     </>
   );
 }
+
