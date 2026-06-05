@@ -1,86 +1,62 @@
 "use client";
 
 import React from "react";
-import { Home, HeartHandshake, ShieldCheck, MessageSquare, Smile } from "lucide-react";
+import { Home, BookOpen, Palette, TreePine } from "lucide-react";
 import { motion } from "framer-motion";
-import Section from "../../shared/Section";
-import SectionHeading from "../../shared/SectionHeading";
 
 const diffPoints = [
   {
     icon: Home,
-    title: "Home-from-Home",
-    description: "A cozy, familiar domestic setting where children feel secure and settled, making separation transitions smooth and gentle.",
-    color: "text-indigo-600 bg-indigo-50 border-indigo-100",
+    title: "HAPPY ENVIRONMENT",
   },
   {
-    icon: HeartHandshake,
-    title: "Individual Attention",
-    description: "Low childminder-to-child ratios ensure that your child receives personalized focus, care, and pacing tailored to their milestones.",
-    color: "text-purple-600 bg-purple-50 border-purple-100",
+    icon: BookOpen,
+    title: "ACTIVE LEARNING",
   },
   {
-    icon: ShieldCheck,
-    title: "Safe & Insured Care",
-    description: "Fully Ofsted-registered, DBS-enhanced cleared, and pediatric first aid certified, offering a completely protected setting.",
-    color: "text-green-600 bg-green-50 border-green-100",
+    icon: Palette,
+    title: "CREATIVE LESSONS",
   },
   {
-    icon: MessageSquare,
-    title: "Strong Communication",
-    description: "Daily digital updates, sharing of photo stories, and milestone check-ins keep parents fully connected to daily activities.",
-    color: "text-amber-600 bg-amber-50 border-amber-100",
+    icon: TreePine,
+    title: "AMAZING PLAYGROUND",
   },
 ];
 
 export default function AboutDiff() {
   return (
-    <Section background="white" id="about-diff" className="relative py-8 md:py-12">
-      {/* Playful watermark doodles */}
-      <div className="absolute top-12 left-10 text-[#5F6C37]/5 pointer-events-none -z-10 select-none">
-        <HeartHandshake className="w-16 h-16 md:w-20 md:h-20 rotate-12" />
-      </div>
-      <div className="absolute bottom-12 right-10 text-[#A66B3B]/5 pointer-events-none -z-10 select-none">
-        <Smile className="w-16 h-16 md:w-20 md:h-20 -rotate-12" />
-      </div>
+    <section id="about-diff" className="relative w-full py-16 md:py-20 bg-[#5F6C37] overflow-hidden text-center">
+      {/* Decorative background blurs */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl -z-10 translate-x-20 -translate-y-20" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl -z-10 -translate-x-20 translate-y-20" />
 
-      <SectionHeading
-        title="What Makes Dee's Different"
-        subtitle="We blend professional nursery curriculum milestones with the warmth, flexibility, and love of a family household."
-        badge="Why Choose Us"
-      />
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto relative z-10">
-        {diffPoints.map((point, idx) => {
-          const IconComponent = point.icon;
-          return (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-85px" }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
-              whileHover={{ y: -4, boxShadow: "0 10px 25px -10px rgba(0, 0, 0, 0.04)" }}
-              className="p-5 md:p-6 bg-white border border-slate-100 rounded-2xl shadow-sm transition-all duration-300 flex flex-col justify-between text-left group"
-            >
-              <div className="space-y-3">
-                {/* Icon Container */}
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center border shrink-0 ${point.color}`}>
-                  <IconComponent className="w-4 h-4" />
+      <div className="max-w-7xl xl:max-w-[1360px] mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 justify-items-center relative z-10">
+          {diffPoints.map((point, idx) => {
+            const IconComponent = point.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="flex flex-col items-center group cursor-pointer"
+              >
+                {/* Large white circular icon frame */}
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-105 shrink-0">
+                  <IconComponent className="w-10 h-10 sm:w-12 sm:h-12 text-[#5f6c37]" />
                 </div>
 
-                {/* Text Blocks */}
-                <h3 className="text-base font-bold text-text-primary font-poppins">
+                {/* Bold white uppercase text */}
+                <h3 className="text-xs sm:text-sm font-black text-[#FEFADF] tracking-widest font-poppins mt-5 uppercase text-center leading-snug max-w-[160px] transition-colors group-hover:text-white">
                   {point.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-inter">
-                  {point.description}
-                </p>
-              </div>
-            </motion.div>
-          );
-        })}
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }
