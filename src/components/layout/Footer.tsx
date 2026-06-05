@@ -112,7 +112,7 @@ export default function Footer() {
           <ul className="space-y-2 md:space-y-3.5 text-xs sm:text-sm">
             <li className="flex items-start gap-2 md:gap-3">
               <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-200 shrink-0 mt-0.5" />
-              <span className="text-slate-100">6 Merlin Way, Gillingham, ME7 4JN</span>
+              <span className="text-slate-100">Gillingham, Kent</span>
             </li>
             <li className="flex items-center gap-2 md:gap-3">
               <Phone className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-200 shrink-0" />
