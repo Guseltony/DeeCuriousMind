@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "framer-motion": ["./src/utils/framer-motion-mock.tsx"]
     }
   },
   "include": [

@@ -20,7 +20,7 @@ export default function Section({
       id={id}
       className={twMerge(
         clsx(
-          "relative py-12 md:py-16 px-4 sm:px-6 md:px-8 lg:px-12 w-full transition-colors duration-300 overflow-hidden",
+          "relative py-12 md:py-16 px-4 sm:px-6 lg:px-8 w-full transition-colors duration-300 overflow-hidden",
           {
             "bg-white": background === "white",
             "bg-bg-light": background === "light",
@@ -30,7 +30,7 @@ export default function Section({
         className
       )}
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="max-w-7xl xl:max-w-[1360px] mx-auto w-full">
         {children}
       </div>
     </section>
