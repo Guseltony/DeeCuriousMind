@@ -25,13 +25,13 @@ const diffPoints = [
 
 export default function AboutDiff() {
   return (
-    <section id="about-diff" className="relative w-full py-16 md:py-20 bg-[#5F6C37] overflow-hidden text-center">
+    <section id="about-diff" className="relative w-full py-8 md:py-20 bg-[#5F6C37] overflow-hidden text-center">
       {/* Decorative background blurs */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl -z-10 translate-x-20 -translate-y-20" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl -z-10 -translate-x-20 translate-y-20" />
 
-      <div className="max-w-7xl xl:max-w-[1360px] mx-auto w-full px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 justify-items-center relative z-10">
+      <div className="max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12 justify-items-center relative z-10">
           {diffPoints.map((point, idx) => {
             const IconComponent = point.icon;
             return (
@@ -44,12 +44,12 @@ export default function AboutDiff() {
                 className="flex flex-col items-center group cursor-pointer"
               >
                 {/* Large white circular icon frame */}
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-105 shrink-0">
-                  <IconComponent className="w-10 h-10 sm:w-12 sm:h-12 text-[#5f6c37]" />
+                <div className="w-16 h-16 sm:w-28 sm:h-28 rounded-full bg-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-105 shrink-0">
+                  <IconComponent className="w-7 h-7 sm:w-12 sm:h-12 text-[#5f6c37]" />
                 </div>
 
                 {/* Bold white uppercase text */}
-                <h3 className="text-xs sm:text-sm font-black text-[#FEFADF] tracking-widest font-poppins mt-5 uppercase text-center leading-snug max-w-[160px] transition-colors group-hover:text-white">
+                <h3 className="text-[10px] sm:text-sm font-black text-[#FEFADF] tracking-widest font-poppins mt-3 sm:mt-5 uppercase text-center leading-snug max-w-[160px] transition-colors group-hover:text-white">
                   {point.title}
                 </h3>
               </motion.div>

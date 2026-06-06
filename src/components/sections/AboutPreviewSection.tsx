@@ -12,18 +12,7 @@ import { getYearsOfExperience } from "@/utils/experience";
 export default function AboutPreviewSection() {
   return (
     <Section background="light" id="about-preview" className="relative pt-16 pb-16 md:pt-20 md:pb-20">
-      {/* Wave Dividers */}
-      <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
-          <path d="M0,0 L1440,0 L1440,40 C1080,15 720,15 360,40 L0,20 Z" fill="#FFFFFF" />
-        </svg>
-      </div>
 
-      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
-          <path d="M0,50 L1440,50 L1440,10 C1080,35 720,35 360,10 L0,30 Z" fill="#FFFFFF" />
-        </svg>
-      </div>
 
       {/* Subtle play watermarks */}
       <div className="absolute top-20 right-10 text-primary/5 pointer-events-none -z-10 select-none">
@@ -46,29 +35,33 @@ export default function AboutPreviewSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="lg:col-span-5 relative flex justify-center"
+          className="lg:col-span-5 flex justify-center"
         >
-          {/* Main Photo Frame */}
-          <div className="relative w-[300px] h-[360px] sm:w-[350px] sm:h-[420px] rounded-2xl overflow-hidden shadow-lg border-8 border-white rotate-[-3deg] hover:rotate-0 transition-transform duration-500 z-10">
-            <Image
-              src="/images/denise_childcare_corporate.png"
-              alt="Denise - Founder of Dee's Curious Minds"
-              fill
-              sizes="(max-width: 1280px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
+          {/* Relative wrapper constrained to the picture size */}
+          {/* Relative wrapper constrained to the picture size */}
+          <div className="relative w-[320px] h-[420px] sm:w-[400px] sm:h-[520px]">
+            {/* Main Photo Frame */}
+            <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border-8 border-white rotate-[-3deg] hover:rotate-0 transition-transform duration-500 z-10">
+              <Image
+                src="/images/Denise.jpeg"
+                alt="Denise - Founder of Dee's Curious Minds"
+                fill
+                sizes="(max-width: 1280px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
 
-          {/* Overlapping Stat Box: Experience */}
-          <div className="absolute -right-4 top-12 bg-white px-5 py-3 rounded-2xl shadow-md border border-slate-100 flex flex-col items-center justify-center text-center z-20">
-            <span className="text-2xl font-extrabold text-primary font-poppins">{getYearsOfExperience()}+</span>
-            <span className="text-xs font-semibold text-text-secondary">Years Experience</span>
-          </div>
+            {/* Overlapping Stat Box: Experience */}
+            <div className="absolute -right-4 top-12 bg-white px-5 py-3 rounded-2xl shadow-md border border-slate-100 flex flex-col items-center justify-center text-center z-20">
+              <span className="text-2xl font-extrabold text-primary font-poppins">{getYearsOfExperience()}+</span>
+              <span className="text-xs font-semibold text-text-secondary">Years Experience</span>
+            </div>
 
-          {/* Overlapping Stat Box: Happy Kids */}
-          <div className="absolute -left-4 bottom-12 bg-white px-5 py-3 rounded-2xl shadow-md border border-slate-100 flex flex-col items-center justify-center text-center z-20">
-            <span className="text-2xl font-extrabold text-secondary font-poppins">100%</span>
-            <span className="text-xs font-semibold text-text-secondary">Parent Trust</span>
+            {/* Overlapping Stat Box: Happy Kids */}
+            <div className="absolute -left-4 bottom-12 bg-white px-5 py-3 rounded-2xl shadow-md border border-slate-100 flex flex-col items-center justify-center text-center z-20">
+              <span className="text-2xl font-extrabold text-secondary font-poppins">100%</span>
+              <span className="text-xs font-semibold text-text-secondary">Parent Trust</span>
+            </div>
           </div>
         </motion.div>
 
@@ -91,21 +84,21 @@ export default function AboutPreviewSection() {
           </p>
 
           {/* Check List */}
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm md:text-base text-text-primary font-semibold font-inter">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-              <span>EYFS Curriculum Aligned</span>
+          <ul className="grid grid-cols-2 gap-3 text-xs sm:text-sm md:text-base text-text-primary font-semibold font-inter">
+            <li className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 shrink-0" />
+              <span>EYFS Aligned</span>
             </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-              <span>Paediatric First Aid Certified</span>
+            <li className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 shrink-0" />
+              <span>Paediatric First Aid</span>
             </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-              <span>DBS Enhanced Cleared</span>
+            <li className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 shrink-0" />
+              <span>DBS Cleared</span>
             </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
+            <li className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 shrink-0" />
               <span>Ofsted Registered</span>
             </li>
           </ul>

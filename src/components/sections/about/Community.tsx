@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { BookOpen, TreePine, Users2, Landmark } from "lucide-react";
-import { motion } from "framer-motion";
+import { BookOpen, TreePine, Users2, Landmark, ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Section from "../../shared/Section";
 import SectionHeading from "../../shared/SectionHeading";
 
@@ -35,6 +35,12 @@ const activities = [
 ];
 
 export default function Community() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+
+  const toggleAccordion = (idx: number) => {
+    setActiveIndex(activeIndex === idx ? null : idx);
+  };
+
   return (
     <Section background="white" id="community" className="relative py-8 md:py-12">
       {/* Playful watermark doodles */}
@@ -51,7 +57,7 @@ export default function Community() {
         badge="Active Community"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center max-w-6xl xl:max-w-[1240px] 2xl:max-w-[1400px] 3xl:max-w-[1560px] 4xl:max-w-[1720px] mx-auto">
         {/* Left Column: Visual Support */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -62,7 +68,7 @@ export default function Community() {
         >
           <div className="relative w-[300px] h-[360px] sm:w-[350px] sm:h-[420px] rounded-2xl overflow-hidden shadow-lg border-8 border-white rotate-[3deg] hover:rotate-0 transition-transform duration-500 z-10">
             <Image
-              src="/images/social_group.png"
+              src="/images/children_nature_walk_outing.jpeg"
               alt="Children participating in group library outing"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -87,21 +93,54 @@ export default function Community() {
         >
           {activities.map((act, idx) => {
             const IconComponent = act.icon;
+            const isOpen = activeIndex === idx;
             return (
               <div
                 key={idx}
-                className="p-5 bg-bg-light border border-slate-100 rounded-2xl flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow"
+                onClick={() => toggleAccordion(idx)}
+                className={`p-5 bg-bg-light border rounded-2xl flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow cursor-pointer ${
+                  isOpen ? "border-primary" : "border-slate-100"
+                }`}
               >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center border shrink-0 ${act.color}`}>
-                  <IconComponent className="w-5 h-5" />
+                <div className="flex items-center justify-between">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center border shrink-0 ${act.color}`}>
+                    <IconComponent className="w-5 h-5" />
+                  </div>
+                  <span className="md:hidden">
+                    {isOpen ? (
+                      <ChevronUp className="w-4 h-4 text-slate-400" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4 text-slate-400" />
+                    )}
+                  </span>
                 </div>
                 <div>
                   <h4 className="text-base font-bold text-text-primary font-poppins mb-1">
                     {act.title}
                   </h4>
-                  <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-inter">
-                    {act.description}
-                  </p>
+                  {/* Desktop view: always visible */}
+                  <div className="hidden md:block">
+                    <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-inter">
+                      {act.description}
+                    </p>
+                  </div>
+                  {/* Mobile view: accordion toggle */}
+                  <div className="md:hidden">
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                        >
+                          <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-inter pt-1">
+                            {act.description}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
               </div>
             );

@@ -12,7 +12,7 @@ export default function AboutCta() {
       {/* Background Image with overlay */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/nature_explore.png"
+          src="/images/backyard_playground.jpeg"
           alt="Outdoor nature exploration and playground"
           fill
           className="object-cover"

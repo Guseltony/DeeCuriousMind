@@ -60,18 +60,7 @@ export default function AboutPathway() {
 
   return (
     <Section background="light" id="about-pathway" className="relative pt-16 pb-16 md:pt-20 md:pb-20">
-      {/* Wave Dividers */}
-      <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
-          <path d="M0,0 L1440,0 L1440,20 C1200,50 960,10 720,30 C480,50 240,10 0,40 Z" fill="#FFFFFF" />
-        </svg>
-      </div>
-      
-      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
-          <path d="M0,50 L1440,50 L1440,30 C1200,0 960,40 720,20 C480,0 240,40 0,10 Z" fill="#FFFFFF" />
-        </svg>
-      </div>
+
 
       {/* Playful watermark doodles */}
       <div className="absolute top-24 left-10 text-primary/5 pointer-events-none -z-10 select-none">
@@ -87,7 +76,7 @@ export default function AboutPathway() {
         badge="How Children Learn"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl xl:max-w-[1240px] 2xl:max-w-[1400px] 3xl:max-w-[1560px] 4xl:max-w-[1720px] mx-auto relative z-10">
         {pathwaySteps.map((step, idx) => {
           const IconComponent = step.icon;
           const itemBgColor = step.colorStyle || step.color || "bg-primary text-white";
@@ -123,11 +112,13 @@ export default function AboutPathway() {
                       }`}>
                         Stage {idx + 1}
                       </span>
-                      {isOpen ? (
-                        <ChevronUp className="w-3.5 h-3.5 text-slate-400" />
-                      ) : (
-                        <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
-                      )}
+                      <span className="md:hidden">
+                        {isOpen ? (
+                          <ChevronUp className="w-3.5 h-3.5 text-slate-400" />
+                        ) : (
+                          <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                        )}
+                      </span>
                     </div>
                   </div>
 
@@ -136,20 +127,30 @@ export default function AboutPathway() {
                     {step.title}
                   </h3>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: "easeInOut" }}
-                      >
-                        <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-inter pt-1">
-                          {step.description}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {/* Desktop view: always visible */}
+                  <div className="hidden md:block">
+                    <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-inter pt-1">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  {/* Mobile view: accordion toggle */}
+                  <div className="md:hidden">
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                        >
+                          <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-inter pt-1">
+                            {step.description}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
               </div>
             </motion.div>
