@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -76,9 +77,17 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url("${heroSlides[currentIdx].image}")` }}
-          />
+            className="absolute inset-0 w-full h-full"
+          >
+            <Image
+              src={heroSlides[currentIdx].image}
+              alt={heroSlides[currentIdx].badge}
+              fill
+              priority={currentIdx === 0}
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </motion.div>
         </AnimatePresence>
 
         {/* Dark overlay to ensure text contrast and premium feel */}
