@@ -8,15 +8,10 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-gradient-to-br from-[#738249] via-[#5F6C37] to-[#4E582D] text-slate-100 font-inter mt-0 pt-8 md:pt-16 pb-0">
-      {/* Wavy SVG divider on top of the footer pointing up, colored in footer green */}
-      <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none -translate-y-[99%]">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[20px] md:h-[45px]" preserveAspectRatio="none">
-          <path d="M0,45 C240,90 480,90 720,45 C960,0 1200,0 1440,45 L1440,60 L0,60 Z" fill="#738249" />
-        </svg>
-      </div>
+
 
       {/* Upper Footer */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-6 md:py-12 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 md:gap-x-8 md:gap-y-10">
+      <div className="max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto px-4 md:px-8 lg:px-12 py-6 md:py-12 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 md:gap-x-8 md:gap-y-10">
         {/* Brand Info */}
         <div className="col-span-2 lg:col-span-1 space-y-4 md:space-y-6">
           <Link href="/" className="flex items-center gap-3 group text-white">
@@ -39,7 +34,7 @@ export default function Footer() {
           {/* Social Links */}
           <div className="flex items-center gap-3 md:gap-4">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/search/top/?q=Dees%20curious%20minds"
               target="_blank"
               rel="noopener noreferrer"
               className="p-1.5 md:p-2 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all"
@@ -50,7 +45,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/Dees_curious_minds/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-1.5 md:p-2 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all"
@@ -128,7 +123,7 @@ export default function Footer() {
 
       {/* Lower Footer */}
       <div className="bg-[#4E582D]/40 text-[10px] sm:text-xs text-slate-200/80 py-4 md:py-6 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
+        <div className="max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto px-4 md:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
           <p>© {currentYear} Dee's Curious Minds Childcare. All Rights Reserved.</p>
           <div className="flex gap-4 md:gap-6">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
