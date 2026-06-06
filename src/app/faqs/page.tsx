@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
@@ -9,6 +9,8 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import { Plus, Minus, HelpCircle, Award, Smile } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+
+import { client } from "@/sanity/lib/client";
 
 const allFaqs = [
   {
@@ -38,7 +40,25 @@ const allFaqs = [
 ];
 
 export default function FaqsPage() {
+  const [faqs, setFaqs] = useState(allFaqs);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const fetchFaqs = async () => {
+      try {
+        const data = await client.fetch(`*[_type == "faq"] | order(order asc) {
+          question,
+          answer
+        }`);
+        if (data && data.length > 0) {
+          setFaqs([...data, ...allFaqs]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch FAQs from Sanity:", error);
+      }
+    };
+    fetchFaqs();
+  }, []);
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -78,7 +98,7 @@ export default function FaqsPage() {
           </div>
 
           <div className="max-w-3xl mx-auto space-y-4 relative z-10">
-            {allFaqs.map((faq, idx) => {
+            {faqs.map((faq, idx) => {
               const isOpen = openIndex === idx;
 
               return (
