@@ -66,7 +66,7 @@ export default function DailyActivities() {
         badge="A Typical Day"
       />
 
-      <div className="relative max-w-7xl xl:max-w-[1360px] mx-auto z-10 w-full pt-4">
+      <div className="relative max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto z-10 w-full pt-4">
         {/* Horizontal Connector Line for lg screen sizes */}
         <div className="hidden lg:block absolute top-[94px] left-[10%] right-[10%] h-1 bg-gradient-to-r from-indigo-200 via-emerald-200 to-amber-200 rounded-full -z-10" />
 

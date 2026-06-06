@@ -51,6 +51,61 @@ export default function TrustSection() {
     },
   };
 
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    let direction = 1; // 1 = right, -1 = left
+    let intervalId: NodeJS.Timeout;
+
+    const startAutoScroll = () => {
+      intervalId = setInterval(() => {
+        const maxScrollLeft = el.scrollWidth - el.clientWidth;
+        if (maxScrollLeft <= 0) return;
+
+        let nextScroll = el.scrollLeft + direction * 1.2;
+
+        if (nextScroll >= maxScrollLeft) {
+          nextScroll = maxScrollLeft;
+          direction = -1;
+        } else if (nextScroll <= 0) {
+          nextScroll = 0;
+          direction = 1;
+        }
+
+        el.scrollLeft = nextScroll;
+      }, 40);
+    };
+
+    const handleResize = () => {
+      clearInterval(intervalId);
+      if (window.innerWidth < 1024) {
+        startAutoScroll();
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    const handleInteraction = () => {
+      clearInterval(intervalId);
+    };
+
+    el.addEventListener("touchstart", handleInteraction);
+    el.addEventListener("mousedown", handleInteraction);
+
+    return () => {
+      clearInterval(intervalId);
+      window.removeEventListener("resize", handleResize);
+      if (el) {
+        el.removeEventListener("touchstart", handleInteraction);
+        el.removeEventListener("mousedown", handleInteraction);
+      }
+    };
+  }, []);
+
   return (
     <Section background="white">
       {/* Playful watermark doodles */}
@@ -65,11 +120,12 @@ export default function TrustSection() {
       </div>
 
       <motion.div
+        ref={scrollRef}
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6"
+        className="flex lg:grid lg:grid-cols-4 gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 scrollbar-none snap-x snap-mandatory w-full"
       >
         {trustItems.map((item, index) => {
           const IconComponent = item.icon;
@@ -78,7 +134,7 @@ export default function TrustSection() {
               key={index}
               variants={cardVariants}
               whileHover={{ y: -6, boxShadow: "0 10px 30px -15px rgba(0,0,0,0.08)" }}
-              className="bg-white p-3.5 sm:p-5 md:p-6 rounded-2xl border border-slate-100 shadow-sm transition-all duration-300 flex flex-col gap-2.5 group text-left"
+              className="bg-white p-3.5 sm:p-5 md:p-6 rounded-2xl border border-slate-100 shadow-sm transition-all duration-300 flex flex-col gap-2.5 group text-left w-[240px] sm:w-[280px] lg:w-full shrink-0 snap-center"
             >
               <div className={`p-2.5 w-fit rounded-xl ${item.color} group-hover:scale-105 transition-transform duration-300`}>
                 <IconComponent className="w-5 h-5" />

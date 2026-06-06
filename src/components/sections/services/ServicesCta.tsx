@@ -15,7 +15,7 @@ export default function ServicesCta() {
       {/* Background Image with overlay */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/hero_childcare.png"
+          src="/images/playroom_wide_view.jpeg"
           alt="Warm, friendly playroom environment"
           fill
           className="object-cover"

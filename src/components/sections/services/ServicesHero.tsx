@@ -15,20 +15,15 @@ export default function ServicesHero() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10 translate-x-20 -translate-y-20" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10 -translate-x-20 translate-y-20" />
 
-      {/* Wave Divider at Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
-        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
-          <path d="M0,50 L1440,50 L1440,10 C1080,35 720,35 360,10 L0,30 Z" fill="#FFFFFF" />
-        </svg>
-      </div>
 
-      <div className="max-w-7xl xl:max-w-[1360px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+      <div className="max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-12 lg:gap-16 items-center">
         {/* Text Content (Left Column) */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="lg:col-span-6 space-y-6 text-left"
+          className="lg:col-span-6 space-y-2 md:space-y-6 text-left"
         >
           {/* Subtle Badge */}
           <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-semibold tracking-wide uppercase">
@@ -50,7 +45,7 @@ export default function ServicesHero() {
           </p>
 
           {/* Badges Box */}
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex gap-4">
             <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-100 shadow-sm">
               <Award className="w-4 h-4 text-primary" />
               <span className="text-xs sm:text-sm font-bold text-text-primary font-poppins">{years}+ Years Experience</span>
@@ -67,12 +62,12 @@ export default function ServicesHero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-6 relative flex justify-center items-center h-[350px] sm:h-[450px] md:h-[500px]"
+          className="lg:col-span-6 relative flex justify-center items-center h-[350px] sm:h-[450px] md:h-[500px] "
         >
           {/* Main Image Frame */}
           <div className="relative w-full h-[90%] rounded-2xl overflow-hidden shadow-xl border-4 border-white rotate-[-1.5deg] hover:rotate-0 transition-transform duration-500 z-10">
             <Image
-              src="/images/learning_play.png"
+              src="/images/match_and_count_sorting_tray.jpeg"
               alt="Early education activities at Dee's Curious Minds"
               fill
               priority
