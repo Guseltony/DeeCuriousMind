@@ -1,16 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Sparkles, Compass, Shield, ArrowRight, Palette, Puzzle } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import Section from "../shared/Section";
 import SectionHeading from "../shared/SectionHeading";
+import { client } from "@/sanity/lib/client";
+import * as LucideIcons from "lucide-react";
 
 const services = [
   {
-    image: "/images/learning_play.png",
+    image: "/images/playroom_wide_view.jpeg",
     icon: Shield,
     title: "Full-Time Daycare",
     age: "1 – 5 Years",
@@ -18,7 +20,7 @@ const services = [
     color: "bg-indigo-500 text-white",
   },
   {
-    image: "/images/creative_activity.png",
+    image: "/images/wooden_monkey_stacking_toy.jpeg",
     icon: Sparkles,
     title: "Early Years Learning",
     age: "2 – 5 Years",
@@ -26,7 +28,7 @@ const services = [
     color: "bg-amber-500 text-white",
   },
   {
-    image: "/images/social_group.png",
+    image: "/images/toy_storage_and_first_aid.jpeg",
     icon: Compass,
     title: "Flexi-Care & Half-Days",
     age: "6 Months – 5 Years",
@@ -35,7 +37,56 @@ const services = [
   },
 ];
 
+const serviceImages = [
+  "/images/playroom_wide_view.jpeg",
+  "/images/wooden_monkey_stacking_toy.jpeg",
+  "/images/toy_storage_and_first_aid.jpeg",
+  "/images/outdoor_play_area.jpeg",
+  "/images/backyard_playground.jpeg",
+];
+
+const homeServiceColors = [
+  "bg-indigo-500 text-white",
+  "bg-amber-500 text-white",
+  "bg-purple-500 text-white",
+  "bg-rose-500 text-white",
+  "bg-emerald-500 text-white",
+];
+
 export default function ServicesSection() {
+  const [activeServices, setActiveServices] = useState<any[]>(services);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const data = await client.fetch(`*[_type == "service"] | order(order asc) {
+          title,
+          description,
+          ageRange,
+          schedule,
+          iconName
+        }`);
+        if (data && data.length > 0) {
+          const formatted = data.map((item: any, idx: number) => {
+            const IconComponent = (LucideIcons as any)[item.iconName] || LucideIcons.HelpCircle;
+            return {
+              image: serviceImages[idx % serviceImages.length],
+              icon: IconComponent,
+              title: item.title,
+              age: item.ageRange,
+              description: item.description,
+              color: homeServiceColors[idx % homeServiceColors.length],
+            };
+          });
+          setActiveServices([...formatted, ...services]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch services from Sanity:", error);
+      }
+    };
+    fetchServices();
+  }, []);
+
   const containerVariants: Variants = {
     hidden: {},
     visible: {
@@ -79,7 +130,7 @@ export default function ServicesSection() {
         viewport={{ once: true, margin: "-100px" }}
         className="grid grid-cols-1 md:grid-cols-3 gap-8"
       >
-        {services.map((svc, idx) => {
+        {activeServices.map((svc, idx) => {
           const IconComponent = svc.icon;
           return (
             <motion.div

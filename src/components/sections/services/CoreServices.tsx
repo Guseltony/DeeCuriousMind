@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Heart, TreePine, Palette, BookOpen, Award, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import Section from "../../shared/Section";
 import SectionHeading from "../../shared/SectionHeading";
+import { client } from "@/sanity/lib/client";
+import * as LucideIcons from "lucide-react";
 
 const coreServices = [
   {
@@ -49,21 +51,52 @@ const coreServices = [
   },
 ];
 
+const serviceColors = [
+  { color: "bg-indigo-50 border-indigo-100 text-indigo-600", iconBg: "bg-indigo-500 text-white" },
+  { color: "bg-rose-50 border-rose-100 text-rose-600", iconBg: "bg-rose-500 text-white" },
+  { color: "bg-violet-50 border-violet-100 text-violet-600", iconBg: "bg-violet-500 text-white" },
+  { color: "bg-emerald-50 border-emerald-100 text-emerald-600", iconBg: "bg-emerald-500 text-white" },
+  { color: "bg-amber-50 border-amber-100 text-amber-600", iconBg: "bg-amber-500 text-white" },
+];
+
 export default function CoreServices() {
+  const [activeCoreServices, setActiveCoreServices] = useState<any[]>(coreServices);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const data = await client.fetch(`*[_type == "service"] | order(order asc) {
+          title,
+          description,
+          ageRange,
+          schedule,
+          iconName
+        }`);
+        if (data && data.length > 0) {
+          const formatted = data.map((item: any, idx: number) => {
+            const IconComponent = (LucideIcons as any)[item.iconName] || LucideIcons.HelpCircle;
+            const style = serviceColors[idx % serviceColors.length];
+            return {
+              icon: IconComponent,
+              title: item.title,
+              description: item.description,
+              benefits: [`Ages: ${item.ageRange}`, `Schedule: ${item.schedule}`],
+              color: style.color,
+              iconBg: style.iconBg,
+            };
+          });
+          setActiveCoreServices([...formatted, ...coreServices]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch core services from Sanity:", error);
+      }
+    };
+    fetchServices();
+  }, []);
+
   return (
     <Section background="light" id="core-services" className="relative pt-16 pb-16 md:pt-20 md:pb-20 overflow-hidden">
-      {/* Wave Dividers */}
-      <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
-          <path d="M0,0 L1440,0 L1440,40 C1080,15 720,15 360,40 L0,20 Z" fill="#FFFFFF" />
-        </svg>
-      </div>
-      
-      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
-          <path d="M0,50 L1440,50 L1440,10 C1080,35 720,35 360,10 L0,30 Z" fill="#FFFFFF" />
-        </svg>
-      </div>
+
 
       {/* Playful watermark doodles */}
       <div className="absolute top-20 right-10 text-primary/5 pointer-events-none -z-10 select-none">
@@ -79,8 +112,8 @@ export default function CoreServices() {
         badge="What We Provide"
       />
 
-      <div className="flex flex-wrap justify-center gap-6 lg:gap-8 max-w-7xl xl:max-w-[1360px] mx-auto relative z-10 w-full">
-        {coreServices.map((svc, idx) => {
+      <div className="flex flex-wrap justify-center gap-6 lg:gap-8 max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto relative z-10 w-full">
+        {activeCoreServices.map((svc, idx) => {
           const IconComponent = svc.icon;
           return (
             <motion.div
@@ -110,7 +143,7 @@ export default function CoreServices() {
 
                 {/* Benefits List */}
                 <ul className="space-y-2.5 pt-2 border-t border-slate-50">
-                  {svc.benefits.map((benefit, bIdx) => (
+                  {svc.benefits.map((benefit: string, bIdx: number) => (
                     <li key={bIdx} className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-text-primary font-inter">
                       <div className={`p-0.5 rounded-full ${svc.iconBg}`}>
                         <Check className="w-3.5 h-3.5" />
