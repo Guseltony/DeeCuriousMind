@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote, Smile, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Section from "../shared/Section";
 import SectionHeading from "../shared/SectionHeading";
+import { client } from "@/sanity/lib/client";
 
 const testimonials = [
   {
@@ -30,31 +31,56 @@ const testimonials = [
   },
 ];
 
+const getInitials = (name: string) => {
+  if (!name) return "P";
+  const parts = name.trim().split(/\s+/);
+  if (parts.length > 1) {
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+  return parts[0][0].toUpperCase();
+};
+
 export default function TestimonialsSection() {
+  const [activeTestimonials, setActiveTestimonials] = useState(testimonials);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const data = await client.fetch(`*[_type == "review"] | order(order asc) {
+          rating,
+          parentName,
+          relationship,
+          text
+        }`);
+        if (data && data.length > 0) {
+          const formatted = data.map((item: any) => ({
+            rating: item.rating,
+            name: item.parentName,
+            role: item.relationship || "Parent",
+            quote: item.text,
+            initials: getInitials(item.parentName),
+          }));
+          setActiveTestimonials([...formatted, ...testimonials]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch reviews from Sanity:", error);
+      }
+    };
+    fetchReviews();
+  }, []);
+
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    setActiveIndex((prev) => (prev + 1) % activeTestimonials.length);
   };
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setActiveIndex((prev) => (prev - 1 + activeTestimonials.length) % activeTestimonials.length);
   };
 
   return (
     <Section background="light" id="testimonials" className="relative pt-16 pb-16 md:pt-20 md:pb-20">
-      {/* Wave Dividers */}
-      <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
-          <path d="M0,0 L1440,0 L1440,20 C1200,50 960,10 720,30 C480,50 240,10 0,40 Z" fill="#FFFFFF" />
-        </svg>
-      </div>
-      
-      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
-          <path d="M0,50 L1440,50 L1440,30 C1200,0 960,40 720,20 C480,0 240,40 0,10 Z" fill="#FFFFFF" />
-        </svg>
-      </div>
+
 
       {/* Subtle play watermarks */}
       <div className="absolute top-24 right-10 text-primary/5 pointer-events-none -z-10 select-none">
@@ -73,7 +99,7 @@ export default function TestimonialsSection() {
 
       {/* Desktop Grid Layout */}
       <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
-        {testimonials.map((t, idx) => (
+        {activeTestimonials.map((t, idx) => (
           <div
             key={idx}
             className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between relative hover:shadow-md transition-shadow duration-300"
@@ -119,25 +145,25 @@ export default function TestimonialsSection() {
             <Quote className="absolute top-6 right-6 w-8 h-8 text-primary/5" />
             <div className="space-y-4">
               <div className="flex gap-1">
-                {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
+                {[...Array(activeTestimonials[activeIndex]?.rating || 5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                 ))}
               </div>
               <p className="text-slate-600 font-inter text-sm italic leading-relaxed">
-                "{testimonials[activeIndex].quote}"
+                "{activeTestimonials[activeIndex]?.quote || ""}"
               </p>
             </div>
 
             <div className="flex items-center gap-3 pt-6 mt-6 border-t border-slate-50">
               <div className="w-9 h-9 rounded-full bg-primary/10 text-primary font-bold font-poppins flex items-center justify-center shrink-0 text-sm">
-                {testimonials[activeIndex].initials}
+                {activeTestimonials[activeIndex]?.initials || "P"}
               </div>
               <div>
                 <h4 className="text-sm font-bold text-text-primary font-poppins">
-                  {testimonials[activeIndex].name}
+                  {activeTestimonials[activeIndex]?.name || ""}
                 </h4>
                 <p className="text-[10px] text-text-secondary font-semibold uppercase">
-                  {testimonials[activeIndex].role}
+                  {activeTestimonials[activeIndex]?.role || ""}
                 </p>
               </div>
             </div>
@@ -156,7 +182,7 @@ export default function TestimonialsSection() {
 
           {/* Dot Indicators */}
           <div className="flex gap-1.5">
-            {testimonials.map((_, i) => (
+            {activeTestimonials.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
