@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import HeroSection from "@/components/sections/HeroSection";
 import TrustSection from "@/components/sections/TrustSection";
+import SummerClubSection from "@/components/sections/SummerClubSection";
 import AboutPreviewSection from "@/components/sections/AboutPreviewSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import LearningApproachSection from "@/components/sections/LearningApproachSection";
@@ -47,6 +48,9 @@ export default function Home() {
 
         {/* 2. Trust & Credibility Badges */}
         <TrustSection />
+
+        {/* Summer Club Special Announcement */}
+        <SummerClubSection />
 
         {/* 3. About Denise Preview */}
         <AboutPreviewSection />
