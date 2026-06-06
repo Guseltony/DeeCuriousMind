@@ -1,0 +1,59 @@
+name: Convert Images to WebP
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'public/images/**/*.jpeg'
+      - 'public/images/**/*.jpg'
+      - 'public/images/**/*.png'
+
+jobs:
+  convert-images:
+    name: Convert new images to WebP
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Install webp tools
+        run: sudo apt-get install -y webp
+
+      - name: Find and convert new images to WebP
+        run: |
+          # Get list of newly added image files in this push
+          git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'public/images/*.jpeg' 'public/images/*.jpg' 'public/images/*.png' 'public/images/**/*.jpeg' 'public/images/**/*.jpg' 'public/images/**/*.png' > /tmp/new_images.txt
+          cat /tmp/new_images.txt
+
+          while IFS= read -r file; do
+            if [ -f "$file" ]; then
+              ext="${file##*.}"
+              webp_file="${file%.*}.webp"
+              echo "Converting $file -> $webp_file"
+              cwebp -q 82 "$file" -o "$webp_file"
+            fi
+          done < /tmp/new_images.txt
+
+      - name: Check for converted files
+        id: check_files
+        run: |
+          if git status --porcelain | grep -q '\.webp'; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit WebP images back to repo
+        if: steps.check_files.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/images/**/*.webp public/images/*.webp
+          git commit -m "chore(images): auto-convert new images to WebP [skip ci]"
+          git push
