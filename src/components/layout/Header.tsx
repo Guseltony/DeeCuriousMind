@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import AnnouncementBar from "./AnnouncementBar";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -37,15 +38,16 @@ export default function Header() {
   const isHeaderLight = !isHome || scrolled;
 
   return (
-    <>
+    <div className="fixed top-0 left-0 w-full z-[100] flex flex-col">
+      <AnnouncementBar />
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+        className={`w-full transition-all duration-300 ${
           isHeaderLight
-            ? "bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm py-4"
-            : "bg-transparent py-6"
+            ? "bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm py-3"
+            : "bg-transparent py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 flex items-center justify-between">
+        <div className="max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto px-6 md:px-8 lg:px-12 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10 group-hover:scale-110 transition-transform duration-300">
@@ -201,6 +203,6 @@ export default function Header() {
           </div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
