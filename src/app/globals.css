@@ -21,6 +21,10 @@
   /* Spacing / Border Radius custom names */
   --radius-button: 0.75rem; /* rounded-xl */
   --radius-card: 1rem;      /* rounded-2xl */
+
+  /* Breakpoints */
+  --breakpoint-3xl: 107.5rem; /* 1720px */
+  --breakpoint-4xl: 125rem;   /* 2000px */
 }
 
 :root {
