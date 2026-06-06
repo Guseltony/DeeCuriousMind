@@ -12,7 +12,7 @@ export default function GalleryCta() {
       {/* Background Image with overlay */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/social_group.png"
+          src="/images/cozy_sofa_and_activity_table.jpeg"
           alt="Group reading activity"
           fill
           className="object-cover"

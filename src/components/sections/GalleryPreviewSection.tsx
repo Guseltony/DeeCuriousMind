@@ -10,34 +10,64 @@ import SectionHeading from "../shared/SectionHeading";
 
 const galleryItems = [
   {
-    image: "/images/hero_childcare.png",
+    image: "/images/playroom_wide_view.jpeg",
     title: "Vibrant Playroom",
     category: "Indoor Environment",
     height: "h-[160px] sm:h-[220px] md:h-[280px]",
   },
   {
-    image: "/images/learning_play.png",
+    image: "/images/building_blocks_and_dinosaurs.jpeg",
     title: "Sensory Building Blocks",
     category: "Structured Play",
     height: "h-[200px] sm:h-[260px] md:h-[340px]",
   },
   {
-    image: "/images/creative_activity.png",
-    title: "Watercolor Painting",
+    image: "/images/color_recognition_sensory_tray.jpeg",
+    title: "Color Recognition Stacker",
     category: "Creative Arts",
     height: "h-[180px] sm:h-[240px] md:h-[300px]",
   },
   {
-    image: "/images/nature_explore.png",
+    image: "/images/gardening_planter_box.jpeg",
     title: "Seedling Planting",
     category: "Outdoor Learning",
     height: "h-[220px] sm:h-[280px] md:h-[360px]",
   },
   {
-    image: "/images/social_group.png",
-    title: "Cozy Story Corner",
+    image: "/images/cozy_sofa_and_activity_table.jpeg",
+    title: "Cozy Activity Corner",
     category: "Early Literacy",
     height: "h-[170px] sm:h-[230px] md:h-[310px]",
+  },
+  {
+    image: "/images/with kids/Add_children_to_daycare_setup_202606061350.jpeg",
+    title: "Creative Arts & Crafts",
+    category: "Expressive Design",
+    height: "h-[210px] sm:h-[270px] md:h-[350px]",
+  },
+  {
+    image: "/images/with kids/Children_playing_in_playground_202606051646.jpeg",
+    title: "Outdoor Adventures",
+    category: "Physical Play",
+    height: "h-[190px] sm:h-[250px] md:h-[320px]",
+  },
+  {
+    image: "/images/with kids/Daycare_setting_for_young_children_202606061434.jpeg",
+    title: "Social Development",
+    category: "Group Interaction",
+    height: "h-[200px] sm:h-[260px] md:h-[340px]",
+  },
+  {
+    image: "/images/hero/children-in-garden.jpeg",
+    title: "Exploring Nature",
+    category: "Active Discovery",
+    height: "h-[180px] sm:h-[240px] md:h-[300px]",
+  },
+  {
+    image: "/images/water_play_pipettes_and_funnels.jpeg",
+    title: "Science & Water Experiments",
+    category: "Cognitive Play",
+    height: "h-[220px] sm:h-[280px] md:h-[360px]",
   },
 ];
 

@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
-import GalleryHero from "@/components/sections/gallery/GalleryHero";
 import GalleryMasonry from "@/components/sections/gallery/GalleryMasonry";
 import GalleryCta from "@/components/sections/gallery/GalleryCta";
 
@@ -35,10 +34,7 @@ export default function GalleryPage() {
 
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col w-full overflow-hidden">
-        {/* 1. Gallery Hero Section */}
-        <GalleryHero />
-
-        {/* 2. Filtering Gallery Masonry Grid */}
+        {/* Combined Gallery Hero & Masonry Grid */}
         <GalleryMasonry />
 
         {/* 3. Final CTA Call To Action */}
