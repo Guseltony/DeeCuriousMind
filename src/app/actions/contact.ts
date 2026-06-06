@@ -37,7 +37,7 @@ export async function sendContactInquiry(formData: z.infer<typeof contactSchema>
     // We send from onboarding@resend.dev to a test box, but in production, we reply to the parent.
     const emailResult = await resend.emails.send({
       from: "Dee's Curious Minds <onboarding@resend.dev>",
-      to: ["delivered@resend.dev"], // In development sandbox, Resend sends here. Update when verified.
+      to: [process.env.CONTACT_EMAIL_RECIPIENT || "deescuriousminds@gmail.com"],
       replyTo: email,
       subject: `New Childcare Inquiry: ${subject}`,
       html: `

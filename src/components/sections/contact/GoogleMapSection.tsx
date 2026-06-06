@@ -17,7 +17,7 @@ export default function GoogleMapSection() {
         badge="Location"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto text-left">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-6xl xl:max-w-[1240px] 2xl:max-w-[1400px] 3xl:max-w-[1560px] 4xl:max-w-[1720px] mx-auto text-left">
         
         {/* Left Side: Local Area Information */}
         <motion.div

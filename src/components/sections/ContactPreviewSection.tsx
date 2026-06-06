@@ -11,12 +11,7 @@ export default function ContactPreviewSection() {
 
   return (
     <section className="relative w-full py-16 md:py-24 px-4 md:px-8 lg:px-12 text-center text-white overflow-hidden">
-      {/* Wave Divider at top of ContactPreview to blend white FAQ into dark map */}
-      <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
-        <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative block w-full h-[25px] md:h-[40px]" preserveAspectRatio="none">
-          <path d="M0,0 L1440,0 L1440,40 C1080,15 720,15 360,40 L0,20 Z" fill="#FFFFFF" />
-        </svg>
-      </div>
+
 
       {/* Google Map Background with Overlay */}
       <div className="absolute inset-0 -z-10 w-full h-full select-none">
