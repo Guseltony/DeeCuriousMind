@@ -36,6 +36,9 @@ const createMockComponent = (Tag: any) => {
 // Proxied motion object mapping tags like motion.div, motion.section to mock HTML components
 export const motion = new Proxy({} as any, {
   get: (target, key: string) => {
+    if (key === "create") {
+      return (Component: any) => createMockComponent(Component);
+    }
     if (!target[key]) {
       target[key] = createMockComponent(key);
     }
