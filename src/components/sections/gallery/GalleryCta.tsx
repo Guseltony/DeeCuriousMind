@@ -37,7 +37,7 @@ export default function GalleryCta() {
             We'd Love to Show You Around
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-slate-300 font-inter max-w-xl mx-auto leading-relaxed">
-            The best way to experience Dee's Curious Minds is to see it in person. Contact Denise today to schedule a friendly tour of our learning playroom and garden!
+            The best way to experience Dees Curious Minds is to see it in person. Contact Denise today to schedule a friendly tour of our learning playroom and garden!
           </p>
         </motion.div>
 

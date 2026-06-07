@@ -18,7 +18,7 @@ export default function GoogleMapSection() {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-6xl xl:max-w-[1240px] 2xl:max-w-[1400px] 3xl:max-w-[1560px] 4xl:max-w-[1720px] mx-auto text-left">
-        
+
         {/* Left Side: Local Area Information */}
         <motion.div
           initial={{ opacity: 0, x: -25 }}
@@ -32,9 +32,9 @@ export default function GoogleMapSection() {
               <MapPin className="w-5 h-5 text-primary" />
               Serving Gillingham & Kent
             </h3>
-            
+
             <p className="text-sm md:text-base text-text-secondary leading-relaxed font-inter">
-              Dee's Curious Minds is located in a quiet, family-friendly residential neighborhood in Gillingham. Our quiet location makes it ideal for local Gillingham families as well as commuting parents.
+              Dees Curious Minds is located in a quiet, family-friendly residential neighborhood in Gillingham. Our quiet location makes it ideal for local Gillingham families as well as commuting parents.
             </p>
 
             <ul className="space-y-4 font-inter text-sm text-text-secondary">
@@ -83,7 +83,7 @@ export default function GoogleMapSection() {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Dee's Curious Minds Location Map"
+            title="Dees Curious Minds Location Map"
           />
         </motion.div>
 

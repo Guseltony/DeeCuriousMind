@@ -1,0 +1,25 @@
+1. Resend Customization & Client Registration
+Client Registration: No, your clients (parents visiting the website) do not need to register on Resend or do anything special. The form is fully open to the public; only you needed a Resend account to obtain the API key that powers the backend.
+Changing onboarding@resend.dev: Yes, you can (and should) change this for production. To change it, follow these steps:
+Add your custom domain (e.g., deescuriousminds.co.uk) in the Resend Dashboard > Domains.
+Verify the domain by adding the DNS records (TXT and MX) to your domain registrar (GoDaddy, Namecheap, etc.).
+Once verified, change line 39 in 
+
+contact.ts
+:
+typescript
+// Change this:
+from: "Dees Curious Minds <onboarding@resend.dev>"
+// To your verified domain:
+from: "Dees Curious Minds <inquiries@deescuriousminds.co.uk>"
+Now you can set CONTACT_EMAIL_RECIPIENT in .env to any email (like deescuriousminds@gmail.com) and it will work perfectly.
+2. Website Elements That Benefit From a CMS
+If the client wants the power to edit and update the website dynamically without editing code, here is an audit of the elements that would require a CMS (Content Management System like Sanity.io, Strapi, or Decap CMS) or a simple admin dashboard:
+
+Section / Page	What Needs Updating?	CMS Requirement Level
+Announcement Bar	Banners, seasonal alerts (e.g. Summer Holiday Club), and target booking links.	High (Changes frequently as seasons change).
+Summer Holiday Club	The flyer image upload, dates, times, price, age ranges, and Google Form link.	High (Updates yearly/seasonally).
+Gallery Page	Uploading new photos/videos of activities, setting categories, and writing vertical Instagram Reel captions.	High (Needs frequent additions to keep setting active).
+FAQs Page	Adding new parent questions and answers, or adjusting policy rules.	Medium (Updates occasionally when parents raise common questions).
+Hero Slider	Modifying titles, badges, taglines, and uploading background hero slides.	Medium (Changes when branding or primary services adjust).
+Services / Reviews	Updating hours, session pricing, childcare testimonials, and core activities.	Low (Usually stays the same for long periods).

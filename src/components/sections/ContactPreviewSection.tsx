@@ -21,7 +21,7 @@ export default function ContactPreviewSection() {
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Dee's Curious Minds Location Map"
+          title="Dees Curious Minds Location Map"
         />
         {/* Dark earthy gradient overlay to match our olive green branding */}
         <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/85 via-slate-950/75 to-primary/20" />
@@ -63,7 +63,7 @@ export default function ContactPreviewSection() {
             Enquire & Schedule Visit
             <ArrowRight className="w-4 h-4" />
           </Link>
-          
+
           <a
             href={whatsappUrl}
             target="_blank"

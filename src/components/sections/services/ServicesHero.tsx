@@ -41,7 +41,7 @@ export default function ServicesHero() {
 
           {/* Description - Blended with ServicesIntro concepts */}
           <p className="text-sm md:text-base text-text-secondary font-inter max-w-xl leading-relaxed">
-            At Dee's Curious Minds, we respect child individuality. We organize EYFS-guided daycare activities that match children's natural interests and sleeping/feeding routines, ensuring they grow into confident, curious learners at their own unique pace.
+            At Dees Curious Minds, we respect child individuality. We organize EYFS-guided daycare activities that match children's natural interests and sleeping/feeding routines, ensuring they grow into confident, curious learners at their own unique pace.
           </p>
 
           {/* Badges Box */}
@@ -68,7 +68,7 @@ export default function ServicesHero() {
           <div className="relative w-full h-[90%] rounded-2xl overflow-hidden shadow-xl border-4 border-white rotate-[-1.5deg] hover:rotate-0 transition-transform duration-500 z-10">
             <Image
               src="/images/match_and_count_sorting_tray.jpeg"
-              alt="Early education activities at Dee's Curious Minds"
+              alt="Early education activities at Dees Curious Minds"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 650px"

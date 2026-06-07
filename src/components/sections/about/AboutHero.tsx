@@ -124,7 +124,7 @@ export default function AboutHero() {
             <div className="relative w-full aspect-[4/3] sm:aspect-video lg:aspect-auto lg:h-[580px] rounded-2xl overflow-hidden shadow-xl border-4 border-white rotate-[1.5deg] hover:rotate-0 transition-transform duration-500 z-10 shrink-0">
               <Image
                 src="/images/Denise.jpeg"
-                alt="Denise - Founder of Dee's Curious Minds"
+                alt="Denise - Founder of Dees Curious Minds"
                 fill
                 priority
                 loading="eager"

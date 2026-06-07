@@ -15,7 +15,7 @@ import { getYearsOfExperience } from "@/utils/experience";
 export function generateMetadata(): Metadata {
   const years = getYearsOfExperience();
   return {
-    title: "About Denise | Dee's Curious Minds Childcare Gillingham",
+    title: "About Denise | Dees Curious Minds Childcare Gillingham",
     description:
       `Meet Denise, an Ofsted-registered childminder with over ${years} years of childcare experience. Discover her qualifications, philosophy, and nurturing home childcare environment in Gillingham.`,
     keywords: [
@@ -24,10 +24,10 @@ export function generateMetadata(): Metadata {
       "nursery officer Gillingham",
       "experienced childminder",
       "childcare qualifications Kent",
-      "Dee's Curious Minds",
+      "Dees Curious Minds",
     ],
     openGraph: {
-      title: "About Denise | Dee's Curious Minds Childcare",
+      title: "About Denise | Dees Curious Minds Childcare",
       description:
         `Meet Denise, an Ofsted-registered childminder in Gillingham. ${years}+ years experience in nursery care, childminding, and after-school care.`,
       type: "website",

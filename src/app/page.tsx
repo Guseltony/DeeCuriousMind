@@ -14,8 +14,8 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactPreviewSection from "@/components/sections/ContactPreviewSection";
 
 export const metadata: Metadata = {
-  title: "Dee's Curious Minds | Premium Childcare & Childminding Gillingham",
-  description: "Looking for premium, trustworthy childcare in Gillingham? Dee's Curious Minds offers a secure home setting, EYFS curriculum alignment, and dedicated professional care for children aged 6 months to 5 years.",
+  title: "Dees Curious Minds | Premium Childcare & Childminding Gillingham",
+  description: "Looking for premium, trustworthy childcare in Gillingham? Dees Curious Minds offers a secure home setting, EYFS curriculum alignment, and dedicated professional care for children aged 6 months to 5 years.",
   keywords: [
     "childcare Gillingham",
     "childminder Gillingham",
@@ -23,13 +23,13 @@ export const metadata: Metadata = {
     "home nursery Gillingham",
     "EYFS childcare Gillingham",
     "Montessori play Gillingham",
-    "Dee's Curious Minds"
+    "Dees Curious Minds"
   ],
   openGraph: {
-    title: "Dee's Curious Minds | Premium Childcare & Childminding Gillingham",
+    title: "Dees Curious Minds | Premium Childcare & Childminding Gillingham",
     description: "EYFS-aligned childcare and sensory play in a secure, nurturing home setting in Gillingham, Kent.",
     url: "https://deescuriousminds.co.uk",
-    siteName: "Dee's Curious Minds",
+    siteName: "Dees Curious Minds",
     type: "website",
     locale: "en_GB",
   }

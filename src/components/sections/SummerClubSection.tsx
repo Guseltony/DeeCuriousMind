@@ -76,7 +76,7 @@ export default function SummerClubSection() {
           <div className="relative w-[300px] h-[450px] sm:w-[350px] sm:h-[520px] rounded-2xl overflow-hidden shadow-lg border-8 border-white transition-transform duration-500 hover:scale-[1.02] bg-slate-100">
             <Image
               src={clubInfo.flyerImage}
-              alt="Dee's Curious Minds Summer Holiday Club Flyer"
+              alt="Dees Curious Minds Summer Holiday Club Flyer"
               fill
               sizes="(max-width: 768px) 100vw, 40vw"
               className="object-cover"

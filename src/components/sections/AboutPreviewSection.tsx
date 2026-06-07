@@ -44,7 +44,7 @@ export default function AboutPreviewSection() {
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border-8 border-white rotate-[-3deg] hover:rotate-0 transition-transform duration-500 z-10">
               <Image
                 src="/images/Denise.jpeg"
-                alt="Denise - Founder of Dee's Curious Minds"
+                alt="Denise - Founder of Dees Curious Minds"
                 fill
                 sizes="(max-width: 1280px) 100vw, 50vw"
                 className="object-cover"
@@ -77,7 +77,7 @@ export default function AboutPreviewSection() {
             A Nurturing Home-From-Home Experience
           </h3>
           <p className="text-xs sm:text-sm md:text-base text-text-secondary font-inter leading-relaxed">
-            Hi, I’m Denise! With over a decade of experience in early years development, I founded Dee's Curious Minds to offer families a reliable, highly personal alternative to large nurseries. I believe that children thrive best in a structured yet flexible home environment where they receive individual care and affection.
+            Hi, I’m Denise! With over a decade of experience in early years development, I founded Dees Curious Minds to offer families a reliable, highly personal alternative to large nurseries. I believe that children thrive best in a structured yet flexible home environment where they receive individual care and affection.
           </p>
           <p className="text-xs sm:text-sm md:text-base text-text-secondary font-inter leading-relaxed">
             My philosophy centers on the <strong className="font-semibold text-text-primary">Early Years Foundation Stage (EYFS)</strong> curriculum, combined with child-led play. Every day is filled with reading, sensory play, basic logic games, and outdoor explorations to trigger native curiosity.

@@ -7,20 +7,20 @@ import GalleryMasonry from "@/components/sections/gallery/GalleryMasonry";
 import GalleryCta from "@/components/sections/gallery/GalleryCta";
 
 export const metadata: Metadata = {
-  title: "Our Childcare Playroom & Setting Gallery | Dee's Curious Minds",
+  title: "Our Childcare Playroom & Setting Gallery | Dees Curious Minds",
   description:
-    "Browse the physical learning environments, safe outdoor spaces, sensory toys, and daily activities at Dee's Curious Minds in Gillingham. Take a visual tour today.",
+    "Browse the physical learning environments, safe outdoor spaces, sensory toys, and daily activities at Dees Curious Minds in Gillingham. Take a visual tour today.",
   keywords: [
     "childcare photos Gillingham",
     "playroom gallery Kent",
     "childcare setting tour Gillingham",
     "Montessori environment photos",
-    "Dee's Curious Minds",
+    "Dees Curious Minds",
   ],
   openGraph: {
-    title: "Childcare playroom & setting gallery | Dee's Curious Minds",
+    title: "Childcare playroom & setting gallery | Dees Curious Minds",
     description:
-      "A look inside the home-like learning environments, quiet reading corners, creative art desks, and secure gardens at Dee's Curious Minds.",
+      "A look inside the home-like learning environments, quiet reading corners, creative art desks, and secure gardens at Dees Curious Minds.",
     type: "website",
     locale: "en_GB",
   },

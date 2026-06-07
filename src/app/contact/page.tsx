@@ -7,20 +7,20 @@ import ContactFormSection from "@/components/sections/contact/ContactFormSection
 import GoogleMapSection from "@/components/sections/contact/GoogleMapSection";
 
 export const metadata: Metadata = {
-  title: "Contact Denise | Dee's Curious Minds Childcare Gillingham",
+  title: "Contact Denise | Dees Curious Minds Childcare Gillingham",
   description:
-    "Get in touch with Denise at Dee's Curious Minds in Gillingham, Kent. Submit a childcare enquiry, check open spaces, ask questions, or arrange a setting tour.",
+    "Get in touch with Denise at Dees Curious Minds in Gillingham, Kent. Submit a childcare enquiry, check open spaces, ask questions, or arrange a setting tour.",
   keywords: [
     "Contact childminder Gillingham",
     "enquire childcare Gillingham",
     "nanny Gillingham contact",
     "Gillingham childminding openings",
-    "Dee's Curious Minds",
+    "Dees Curious Minds",
   ],
   openGraph: {
     title: "Contact Denise | Childcare Enquiry & Visits Gillingham",
     description:
-      "Have questions or want to arrange a setting visit? Contact Denise at Dee's Curious Minds Childcare in Gillingham, Kent.",
+      "Have questions or want to arrange a setting visit? Contact Denise at Dees Curious Minds Childcare in Gillingham, Kent.",
     type: "website",
     locale: "en_GB",
   },

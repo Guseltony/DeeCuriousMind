@@ -41,11 +41,10 @@ export default function Header() {
     <div className="fixed top-0 left-0 w-full z-[100] flex flex-col">
       <AnnouncementBar />
       <header
-        className={`w-full transition-all duration-300 ${
-          isHeaderLight
+        className={`w-full transition-all duration-300 ${isHeaderLight
             ? "bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm py-3"
             : "bg-transparent py-5"
-        }`}
+          }`}
       >
         <div className="max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto px-6 md:px-8 lg:px-12 flex items-center justify-between">
           {/* Logo */}
@@ -59,9 +58,8 @@ export default function Header() {
                 className="object-contain"
               />
             </div>
-            <span className={`text-xl font-bold tracking-tight font-poppins transition-colors duration-300 ${
-              isHeaderLight ? "text-text-primary" : "text-white"
-            }`}>
+            <span className={`text-xl font-bold tracking-tight font-poppins transition-colors duration-300 ${isHeaderLight ? "text-text-primary" : "text-white"
+              }`}>
               Dees <span className={isHeaderLight ? "text-secondary" : "text-accent"}>Curious Minds</span>
             </span>
           </Link>
@@ -74,23 +72,21 @@ export default function Header() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-semibold tracking-wide font-inter transition-colors duration-300 relative py-1 ${
-                    isActive
+                  className={`text-sm font-semibold tracking-wide font-inter transition-colors duration-300 relative py-1 ${isActive
                       ? isHeaderLight
                         ? "text-primary"
                         : "text-accent"
                       : isHeaderLight
-                      ? "text-text-secondary hover:text-text-primary"
-                      : "text-white/85 hover:text-white"
-                  }`}
+                        ? "text-text-secondary hover:text-text-primary"
+                        : "text-white/85 hover:text-white"
+                    }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.div
                       layoutId="activeNavLine"
-                      className={`absolute bottom-0 left-0 w-full h-[2px] rounded-full ${
-                        isHeaderLight ? "bg-primary" : "bg-accent"
-                      }`}
+                      className={`absolute bottom-0 left-0 w-full h-[2px] rounded-full ${isHeaderLight ? "bg-primary" : "bg-accent"
+                        }`}
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -112,11 +108,10 @@ export default function Header() {
           {/* Mobile Menu Trigger */}
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className={`p-2 md:hidden rounded-lg transition-colors ${
-              isHeaderLight
+            className={`p-2 md:hidden rounded-lg transition-colors ${isHeaderLight
                 ? "text-text-secondary hover:text-text-primary hover:bg-slate-100"
                 : "text-white hover:text-white/80 hover:bg-white/10"
-            }`}
+              }`}
             aria-label="Open navigation menu"
           >
             <Menu className="w-6 h-6" />
@@ -158,7 +153,7 @@ export default function Header() {
                       />
                     </div>
                     <span className="text-lg font-bold tracking-tight text-text-primary font-poppins">
-                      Dee's Minds
+                      Dees Minds
                     </span>
                   </div>
                   <button
@@ -178,9 +173,8 @@ export default function Header() {
                         key={link.name}
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`text-lg font-semibold font-inter py-2 border-b border-slate-50 transition-colors ${
-                          isActive ? "text-primary" : "text-text-secondary hover:text-text-primary"
-                        }`}
+                        className={`text-lg font-semibold font-inter py-2 border-b border-slate-50 transition-colors ${isActive ? "text-primary" : "text-text-secondary hover:text-text-primary"
+                          }`}
                       >
                         {link.name}
                       </Link>

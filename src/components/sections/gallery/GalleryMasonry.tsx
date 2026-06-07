@@ -86,7 +86,8 @@ export default function GalleryMasonry() {
   return (
     <div className="w-full flex flex-col bg-bg-light">
       {/* Scrollbar hiding styles for desktop */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @media (min-width: 768px) {
           .hide-scrollbar::-webkit-scrollbar {
             display: none !important;
@@ -122,7 +123,7 @@ export default function GalleryMasonry() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-text-primary leading-tight font-poppins">
               Explore Life at <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                Dee's Curious Minds
+                Dees Curious Minds
               </span>
             </h1>
 
@@ -175,7 +176,7 @@ export default function GalleryMasonry() {
       {selectedIdx !== null && (
         <div className="fixed inset-0 bg-black/95 backdrop-blur-md z-[150] flex items-center justify-center overflow-hidden select-none">
           {/* Centered Scrollable Instagram Reels Container */}
-          <div 
+          <div
             id="reels-scroll-container"
             className="w-full max-w-[480px] md:max-w-[700px] lg:max-w-[850px] xl:max-w-[950px] h-full h-screen h-[100dvh] bg-neutral-950 md:border-x md:border-neutral-800/40 overflow-y-scroll snap-y snap-mandatory scroll-smooth relative flex flex-col hide-scrollbar touch-pan-y"
           >
@@ -195,7 +196,7 @@ export default function GalleryMasonry() {
                 <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/80 to-transparent p-4 flex items-center justify-between pointer-events-none z-20">
                   <span className="font-poppins font-extrabold text-xs tracking-wider text-white drop-shadow-md flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-accent animate-pulse fill-accent" />
-                    DEE'S CURIOUS MINDS
+                    Dees CURIOUS MINDS
                   </span>
                 </div>
 
@@ -206,7 +207,7 @@ export default function GalleryMasonry() {
                       ✨
                     </div>
                     <span className="font-poppins font-bold text-sm tracking-wide text-white drop-shadow-md">
-                      Dee's Curious Minds
+                      Dees Curious Minds
                     </span>
                     <span className="px-2 py-0.5 rounded-full bg-primary/80 border border-primary/20 text-[9px] font-bold uppercase tracking-wider text-white">
                       Setting

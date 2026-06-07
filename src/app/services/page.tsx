@@ -9,19 +9,19 @@ import DailyActivities from "@/components/sections/services/DailyActivities";
 import ServicesCta from "@/components/sections/services/ServicesCta";
 
 export const metadata: Metadata = {
-  title: "Our Childcare Services | Dee's Curious Minds Gillingham",
+  title: "Our Childcare Services | Dees Curious Minds Gillingham",
   description:
-    "Explore early years childcare services at Dee's Curious Minds in Gillingham. Play-based learning, cognitive milestones, sensory explorations, creative arts, and school readiness.",
+    "Explore early years childcare services at Dees Curious Minds in Gillingham. Play-based learning, cognitive milestones, sensory explorations, creative arts, and school readiness.",
   keywords: [
     "childcare services Gillingham",
     "early years learning Kent",
     "play-based childcare",
     "school readiness childminder",
     "toddler sensory activities",
-    "Dee's Curious Minds",
+    "Dees Curious Minds",
   ],
   openGraph: {
-    title: "Childcare & Childminding Services | Dee's Curious Minds",
+    title: "Childcare & Childminding Services | Dees Curious Minds",
     description:
       "High-quality early learning and development services in Gillingham. Guided play, social milestones, language rich environment, and outdoor exploration.",
     type: "website",

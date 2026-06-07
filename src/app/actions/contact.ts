@@ -36,7 +36,7 @@ export async function sendContactInquiry(formData: z.infer<typeof contactSchema>
     // By default, Resend onboarding allows sending to the address associated with your account.
     // We send from onboarding@resend.dev to a test box, but in production, we reply to the parent.
     const emailResult = await resend.emails.send({
-      from: "Dee's Curious Minds <onboarding@resend.dev>",
+      from: "Dees Curious Minds <onboarding@resend.dev>",
       to: [process.env.CONTACT_EMAIL_RECIPIENT || "deescuriousminds@gmail.com"],
       replyTo: email,
       subject: `New Childcare Inquiry: ${subject}`,
