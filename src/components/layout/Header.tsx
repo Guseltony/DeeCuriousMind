@@ -62,7 +62,7 @@ export default function Header() {
             <span className={`text-xl font-bold tracking-tight font-poppins transition-colors duration-300 ${
               isHeaderLight ? "text-text-primary" : "text-white"
             }`}>
-              Dee's <span className={isHeaderLight ? "text-secondary" : "text-accent"}>Curious Minds</span>
+              Dees <span className={isHeaderLight ? "text-secondary" : "text-accent"}>Curious Minds</span>
             </span>
           </Link>
 
@@ -151,7 +151,7 @@ export default function Header() {
                     <div className="relative w-8 h-8">
                       <Image
                         src="/black-logo.webp"
-                        alt="Dee's Curious Minds Logo"
+                        alt="Dees Curious Minds Logo"
                         fill
                         sizes="32px"
                         className="object-contain"
