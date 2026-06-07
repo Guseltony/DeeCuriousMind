@@ -53,7 +53,7 @@ export default function Header() {
             <div className="relative w-10 h-10 group-hover:scale-110 transition-transform duration-300">
               <Image
                 src={isHeaderLight ? "/black-logo.webp" : "/white-logo.webp"}
-                alt="Dee's Curious Minds Logo"
+                alt="Dees Curious Minds Logo"
                 fill
                 sizes="40px"
                 className="object-contain"
