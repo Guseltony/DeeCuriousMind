@@ -51,7 +51,7 @@ export default function AboutHero() {
                 Throughout my journey, I’ve had the privilege of serving as a <strong className="font-semibold text-text-primary">Nursery Officer</strong>, a <strong className="font-semibold text-text-primary">Nursery Nurse</strong>, and an <strong className="font-semibold text-text-primary">After School Manager</strong>. These professional roles allowed me to work with children from diverse backgrounds, understanding their unique developmental milestones, learning patterns, and emotional needs.
               </p>
               <p>
-                I founded <strong className="font-semibold text-text-primary">Dee’s Curious Minds</strong> in Gillingham to create a nurturing, secure home-from-home setting. By combining the structured learning of the EYFS curriculum with the custom attention, safety, and warmth of a domestic environment, I help children grow and discover at their own unique pace.
+                I founded <strong className="font-semibold text-text-primary">Dees Curious Minds</strong> in Gillingham to create a nurturing, secure home-from-home setting. By combining the structured learning of the EYFS curriculum with the custom attention, safety, and warmth of a domestic environment, I help children grow and discover at their own unique pace.
               </p>
             </div>
 
