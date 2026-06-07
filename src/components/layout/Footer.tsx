@@ -18,14 +18,14 @@ export default function Footer() {
             <div className="relative w-8 h-8 md:w-10 md:h-10 shrink-0">
               <Image
                 src="/white-logo.webp"
-                alt="Dee's Curious Minds Logo"
+                alt="Dees Curious Minds Logo"
                 fill
                 sizes="40px"
                 className="object-contain"
               />
             </div>
             <span className="text-lg md:text-xl font-bold tracking-tight font-poppins text-white">
-              Dee's <span className="text-yellow-200">Curious Minds</span>
+              Dees <span className="text-yellow-200">Curious Minds</span>
             </span>
           </Link>
           <p className="text-xs sm:text-sm leading-relaxed text-slate-200/90">
@@ -124,7 +124,7 @@ export default function Footer() {
       {/* Lower Footer */}
       <div className="bg-[#4E582D]/40 text-[10px] sm:text-xs text-slate-200/80 py-4 md:py-6 border-t border-white/10">
         <div className="max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto px-4 md:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
-          <p>© {currentYear} Dee's Curious Minds Childcare. All Rights Reserved.</p>
+          <p>© {currentYear} Dees Curious Minds Childcare. All Rights Reserved.</p>
           <div className="flex gap-4 md:gap-6">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
