@@ -9,32 +9,41 @@ import { motion, AnimatePresence } from "framer-motion";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 
-const defaultSlides = [
-  {
-    image: "/images/hero/background.jpeg",
-    badge: "Premium Home-from-Home Daycare",
-    title: "A Nurturing Space Where Curious Minds Grow",
-    description: "Offering a loving, secure, and stimulating early learning setting in Gillingham. Your child's comfort and developmental milestones are our highest priority.",
-  },
-  {
-    image: "/images/hero/children-sorting.jpeg",
-    badge: "Active EYFS Learning",
-    title: "Creative Play That Inspires Young Minds",
-    description: "Engaging child-led sensory sorting, arts, and cognitive puzzles. We follow the EYFS framework to prepare children for preschool at their own unique pace.",
-  },
-  {
-    image: "/images/hero/children-in-garden.jpeg",
-    badge: "Outdoor Exploration",
-    title: "Discovering Nature in Our Secure Playground",
-    description: "Fresh air, gardening, and physical outdoor play in our fully equipped, safe garden setting. Helping children build motor skills and healthy, active habits.",
-  },
-];
+interface HeroSlide {
+  image: string;
+  badge: string;
+  title: string;
+  description: string;
+}
 
-export default function HeroSection() {
-  const [heroSlides, setHeroSlides] = useState(defaultSlides);
+// const defaultSlides = [
+//   {
+//     image: "/images/hero/background.jpeg",
+//     badge: "Premium Home-from-Home Daycare",
+//     title: "A Nurturing Space Where Curious Minds Grow",
+//     description: "Offering a loving, secure, and stimulating early learning setting in Gillingham. Your child's comfort and developmental milestones are our highest priority.",
+//   },
+//   {
+//     image: "/images/hero/children-sorting.jpeg",
+//     badge: "Active EYFS Learning",
+//     title: "Creative Play That Inspires Young Minds",
+//     description: "Engaging child-led sensory sorting, arts, and cognitive puzzles. We follow the EYFS framework to prepare children for preschool at their own unique pace.",
+//   },
+//   {
+//     image: "/images/hero/children-in-garden.jpeg",
+//     badge: "Outdoor Exploration",
+//     title: "Discovering Nature in Our Secure Playground",
+//     description: "Fresh air, gardening, and physical outdoor play in our fully equipped, safe garden setting. Helping children build motor skills and healthy, active habits.",
+//   },
+// ];
+
+export default function HeroSection({ initialSlides }: { initialSlides?: HeroSlide[] } = {}) {
+  const [heroSlides, setHeroSlides] = useState<HeroSlide[]>(initialSlides || []);
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [isLoading, setIsLoading] = useState(!initialSlides || initialSlides.length === 0);
 
   useEffect(() => {
+    if (initialSlides && initialSlides.length > 0) return;
     const fetchSlides = async () => {
       try {
         const data = await client.fetch(`*[_type == "heroSlide"] | order(order asc) {
@@ -50,24 +59,35 @@ export default function HeroSection() {
             title: item.title,
             description: item.description,
           }));
-          setHeroSlides([...formattedSlides, ...defaultSlides]);
+          setHeroSlides(formattedSlides);
         }
       } catch (error) {
         console.error("Failed to fetch hero slides from Sanity:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchSlides();
-  }, []);
+  }, [initialSlides]);
 
   useEffect(() => {
+    if (heroSlides.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % heroSlides.length);
     }, 6000);
     return () => clearInterval(timer);
   }, [heroSlides.length]);
 
+  if (isLoading || heroSlides.length === 0) {
+    return (
+      <section className="relative min-h-[100vh] lg:min-h-[90vh] flex items-center pt-28 pb-20 px-4 sm:px-6 md:px-8 lg:px-12 w-full overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 bg-slate-900 animate-pulse z-0" />
+      </section>
+    );
+  }
+
   return (
-    <section className="relative min-h-[100vh] lg:min-h-[90vh] flex items-center pt-28 pb-20 px-4 sm:px-6 md:px-8 lg:px-12 w-full overflow-hidden bg-slate-950">
+    <section className="relative min-h-[90vh] lg:min-h-[85vh] flex items-center pt-28 pb-20 px-4 sm:px-6 md:px-8 lg:px-12 w-full overflow-hidden bg-slate-950">
       {/* Background Slideshow */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
@@ -151,17 +171,19 @@ export default function HeroSection() {
       </div>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex gap-2.5">
-        {heroSlides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentIdx(i)}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${currentIdx === i ? "bg-white w-6" : "bg-white/40"
-              }`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
-      </div>
+      {heroSlides.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex gap-2.5">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentIdx(i)}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${currentIdx === i ? "bg-white w-6" : "bg-white/40"
+                }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 }

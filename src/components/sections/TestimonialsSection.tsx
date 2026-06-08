@@ -1,35 +1,35 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote, Smile, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Section from "../shared/Section";
 import SectionHeading from "../shared/SectionHeading";
 import { client } from "@/sanity/lib/client";
 
-const testimonials = [
-  {
-    rating: 5,
-    name: "Sarah Jenkins",
-    role: "Mother of Leo (3 years old)",
-    quote: "Finding Denise was the best thing that happened to our family. Leo settled in instantly. Her home is incredibly warm and safe, and she gives him the kind of personal care you just can't get at a larger nursery.",
-    initials: "SJ",
-  },
-  {
-    rating: 5,
-    name: "David Miller",
-    role: "Father of Mia (18 months old)",
-    quote: "Denise's focus on learning through play is amazing. Mia comes home talking about planting flowers and painting colors. Denise is organized, professional, and provides detailed daily updates.",
-    initials: "DM",
-  },
-  {
-    rating: 5,
-    name: "Emily Thompson",
-    role: "Mother of Noah (4 years old)",
-    quote: "Noah has grown so much socially. The EYFS timeline Denise follows prepares the kids so well for preschool. I trust her completely and would recommend her services to any parent.",
-    initials: "ET",
-  },
-];
+// const testimonials = [
+//   {
+//     rating: 5,
+//     name: "Sarah Jenkins",
+//     role: "Mother of Leo (3 years old)",
+//     quote: "Finding Denise was the best thing that happened to our family. Leo settled in instantly. Her home is incredibly warm and safe, and she gives him the kind of personal care you just can't get at a larger nursery.",
+//     initials: "SJ",
+//   },
+//   {
+//     rating: 5,
+//     name: "David Miller",
+//     role: "Father of Mia (18 months old)",
+//     quote: "Denise's focus on learning through play is amazing. Mia comes home talking about planting flowers and painting colors. Denise is organized, professional, and provides detailed daily updates.",
+//     initials: "DM",
+//   },
+//   {
+//     rating: 5,
+//     name: "Emily Thompson",
+//     role: "Mother of Noah (4 years old)",
+//     quote: "Noah has grown so much socially. The EYFS timeline Denise follows prepares the kids so well for preschool. I trust her completely and would recommend her services to any parent.",
+//     initials: "ET",
+//   },
+// ];
 
 const getInitials = (name: string) => {
   if (!name) return "P";
@@ -41,7 +41,7 @@ const getInitials = (name: string) => {
 };
 
 export default function TestimonialsSection() {
-  const [activeTestimonials, setActiveTestimonials] = useState(testimonials);
+  const [activeTestimonials, setActiveTestimonials] = useState<any[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function TestimonialsSection() {
             quote: item.text,
             initials: getInitials(item.parentName),
           }));
-          setActiveTestimonials([...formatted, ...testimonials]);
+          setActiveTestimonials([...formatted]);
         }
       } catch (error) {
         console.error("Failed to fetch reviews from Sanity:", error);
@@ -186,9 +186,8 @@ export default function TestimonialsSection() {
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  activeIndex === i ? "bg-primary w-5" : "bg-slate-200"
-                }`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${activeIndex === i ? "bg-primary w-5" : "bg-slate-200"
+                  }`}
                 aria-label={`Go to slide ${i + 1}`}
               />
             ))}

@@ -12,6 +12,8 @@ import LearningApproachSection from "@/components/sections/LearningApproachSecti
 import GalleryPreviewSection from "@/components/sections/GalleryPreviewSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactPreviewSection from "@/components/sections/ContactPreviewSection";
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
 
 export const metadata: Metadata = {
   title: "Dees Curious Minds | Premium Childcare & Childminding Gillingham",
@@ -35,7 +37,32 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Home() {
+
+async function getHeroSlides() {
+  try {
+    const data = await client.fetch(`*[_type == "heroSlide"] | order(order asc) {
+      title,
+      badge,
+      description,
+      image
+    }`);
+    if (data && data.length > 0) {
+      return data.map((item: any) => ({
+        image: urlForImage(item.image).url(),
+        badge: item.badge,
+        title: item.title,
+        description: item.description,
+      }));
+    }
+  } catch (error) {
+    console.error("Failed to fetch hero slides from Sanity:", error);
+  }
+  return [];
+}
+
+export default async function Home() {
+  const heroSlides = await getHeroSlides();
+
   return (
     <>
       {/* Sticky Header Navigation */}
@@ -44,7 +71,7 @@ export default function Home() {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col w-full overflow-hidden">
         {/* 1. Hero Section */}
-        <HeroSection />
+        <HeroSection initialSlides={heroSlides} />
 
         {/* 2. Trust & Credibility Badges */}
         <TrustSection />
