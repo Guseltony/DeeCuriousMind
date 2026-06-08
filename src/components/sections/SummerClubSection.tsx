@@ -10,16 +10,30 @@ import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 
 export default function SummerClubSection() {
+  // const [clubInfo, setClubInfo] = useState({
+  //   title: "🌞 We’re Back Again for Another Exciting Summer! 🌈",
+  //   description: "Our fun-filled club offers a safe, stimulating, and creative environment where children can learn, play, and thrive. Each day is packed with excitement — from outdoor adventures and arts & crafts to sports, themed days, and so much more! 🎨⚽🌿",
+  //   flyerImage: "/images/summer_club.png",
+  //   dateRange: "20th July – 14th August 2026",
+  //   hours: "09:00am – 03:00pm",
+  //   location: "Gillingham",
+  //   ages: "2 – 11 years",
+  //   pricing: "£30 per day (Lunch & Snacks included)",
+  //   formUrl: "https://docs.google.com/forms/d/1e2MNK5ITSYLdb9Sa9385RAxSdCU6Dtx3qOpVLfEUseg/edit",
+  // });
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasData, setHasData] = useState(false);
+
   const [clubInfo, setClubInfo] = useState({
-    title: "🌞 We’re Back Again for Another Exciting Summer! 🌈",
-    description: "Our fun-filled club offers a safe, stimulating, and creative environment where children can learn, play, and thrive. Each day is packed with excitement — from outdoor adventures and arts & crafts to sports, themed days, and so much more! 🎨⚽🌿",
-    flyerImage: "/images/summer_club.png",
-    dateRange: "20th July – 14th August 2026",
-    hours: "09:00am – 03:00pm",
-    location: "Gillingham",
-    ages: "2 – 11 years",
-    pricing: "£30 per day (Lunch & Snacks included)",
-    formUrl: "https://docs.google.com/forms/d/1e2MNK5ITSYLdb9Sa9385RAxSdCU6Dtx3qOpVLfEUseg/edit",
+    title: "",
+    description: "",
+    flyerImage: "",
+    dateRange: "",
+    hours: "",
+    location: "",
+    ages: "",
+    pricing: "",
+    formUrl: "",
   });
 
   useEffect(() => {
@@ -48,13 +62,21 @@ export default function SummerClubSection() {
             pricing: data.pricing || "£30 per day (Lunch & Snacks included)",
             formUrl: data.formUrl || "https://docs.google.com/forms/d/1e2MNK5ITSYLdb9Sa9385RAxSdCU6Dtx3qOpVLfEUseg/edit",
           });
+          setHasData(true);
+        } else {
+          setHasData(false);
         }
       } catch (error) {
         console.error("Failed to fetch Summer Club info from Sanity:", error);
+        setHasData(false);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchClub();
   }, []);
+
+  if (isLoading || !hasData) return null;
 
   return (
     <Section background="light" id="summer-club">

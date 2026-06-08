@@ -3,11 +3,17 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { client } from "@/sanity/lib/client";
 
 export default function AnnouncementBar() {
+  // const [announcement, setAnnouncement] = useState({
+  //   text: "☀️ Summer Club 2026 Open!",
+  //   linkText: "Book Spot Now",
+  //   linkUrl: "https://docs.google.com/forms/d/1e2MNK5ITSYLdb9Sa9385RAxSdCU6Dtx3qOpVLfEUseg/edit",
+  //   isActive: true,
+  // });
   const [announcement, setAnnouncement] = useState({
-    text: "☀️ Summer Club 2026 Open!",
-    linkText: "Book Spot Now",
-    linkUrl: "https://docs.google.com/forms/d/1e2MNK5ITSYLdb9Sa9385RAxSdCU6Dtx3qOpVLfEUseg/edit",
-    isActive: true,
+    text: "",
+    linkText: "",
+    linkUrl: "",
+    isActive: false,
   });
 
   useEffect(() => {
