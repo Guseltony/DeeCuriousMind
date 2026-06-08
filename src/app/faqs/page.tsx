@@ -12,36 +12,42 @@ import Link from "next/link";
 
 import { client } from "@/sanity/lib/client";
 
-const allFaqs = [
-  {
-    question: "What ages do you accept?",
-    answer: "We welcome children from 6 months to 5 years old. Our childcare spaces, Montessori toys, and learning pathways are specifically tailored to fit the developmental milestones of early infancy through pre-school age.",
-  },
-  {
-    question: "What are your opening hours?",
-    answer: "Our standard opening hours are Monday to Friday, from 8:00 AM to 6:00 PM. We are closed on Saturdays, Sundays, and major bank holidays.",
-  },
-  {
-    question: "How quickly do you respond to inquiries?",
-    answer: "We review and reply to all contact messages, emails, and WhatsApp enquiries within 24 hours on weekdays. For inquiries submitted over weekends, we will get back to you first thing on Monday morning.",
-  },
-  {
-    question: "Can I arrange a visit to the setting?",
-    answer: "Yes, absolutely! We encourage all parents to visit our playroom and meet Denise before making a decision. To protect our childcare routine and security, visits are scheduled by prior appointment only, usually after 6:00 PM on weekdays.",
-  },
-  {
-    question: "How do I check slot availability?",
-    answer: "Fill out the contact form specifying your required days and hours, or click the WhatsApp button to chat directly. We will let you know immediately if we have open slots or can add you to our waiting list. Ratios are kept small, so early enrollment is recommended.",
-  },
-  {
-    question: "What activities do children participate in?",
-    answer: "Our daily routine includes structured learning milestones aligned with EYFS (Early Years Foundation Stage) such as phonic reading, sensory play, painting/crafts, fine motor puzzles, outdoor gardening exploration, music hours, and rest periods.",
-  },
-];
+// const allFaqs = [
+//   {
+//     question: "What ages do you accept?",
+//     answer: "We welcome children from 6 months to 5 years old. Our childcare spaces, Montessori toys, and learning pathways are specifically tailored to fit the developmental milestones of early infancy through pre-school age.",
+//   },
+//   {
+//     question: "What are your opening hours?",
+//     answer: "Our standard opening hours are Monday to Friday, from 8:00 AM to 6:00 PM. We are closed on Saturdays, Sundays, and major bank holidays.",
+//   },
+//   {
+//     question: "How quickly do you respond to inquiries?",
+//     answer: "We review and reply to all contact messages, emails, and WhatsApp enquiries within 24 hours on weekdays. For inquiries submitted over weekends, we will get back to you first thing on Monday morning.",
+//   },
+//   {
+//     question: "Can I arrange a visit to the setting?",
+//     answer: "Yes, absolutely! We encourage all parents to visit our playroom and meet Denise before making a decision. To protect our childcare routine and security, visits are scheduled by prior appointment only, usually after 6:00 PM on weekdays.",
+//   },
+//   {
+//     question: "How do I check slot availability?",
+//     answer: "Fill out the contact form specifying your required days and hours, or click the WhatsApp button to chat directly. We will let you know immediately if we have open slots or can add you to our waiting list. Ratios are kept small, so early enrollment is recommended.",
+//   },
+//   {
+//     question: "What activities do children participate in?",
+//     answer: "Our daily routine includes structured learning milestones aligned with EYFS (Early Years Foundation Stage) such as phonic reading, sensory play, painting/crafts, fine motor puzzles, outdoor gardening exploration, music hours, and rest periods.",
+//   },
+// ];
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
 
 export default function FaqsPage() {
-  const [faqs, setFaqs] = useState(allFaqs);
+  const [faqs, setFaqs] = useState<FaqItem[]>([]);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchFaqs = async () => {
@@ -51,10 +57,12 @@ export default function FaqsPage() {
           answer
         }`);
         if (data && data.length > 0) {
-          setFaqs([...data, ...allFaqs]);
+          setFaqs(data);
         }
       } catch (error) {
         console.error("Failed to fetch FAQs from Sanity:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchFaqs();
@@ -98,7 +106,19 @@ export default function FaqsPage() {
           </div>
 
           <div className="max-w-3xl mx-auto space-y-4 relative z-10">
-            {faqs.map((faq, idx) => {
+            {isLoading ? (
+              Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="bg-white rounded-3xl border-2 border-slate-100 shadow-sm p-4 sm:p-5 h-[72px] sm:h-[84px] animate-pulse">
+                  <div className="flex items-center justify-between h-full">
+                    <div className="flex items-center gap-3 w-2/3">
+                      <div className="w-5 h-5 rounded-full bg-slate-200 shrink-0" />
+                      <div className="h-4 bg-slate-200 rounded w-full" />
+                    </div>
+                    <div className="w-6 h-6 rounded-xl bg-slate-200 shrink-0" />
+                  </div>
+                </div>
+              ))
+            ) : faqs.map((faq, idx) => {
               const isOpen = openIndex === idx;
 
               return (

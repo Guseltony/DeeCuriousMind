@@ -8,36 +8,41 @@ import Section from "../../shared/Section";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 
-const defaultGalleryList = [
-  { src: "/images/playroom_wide_view.jpeg", caption: "Welcome to our spacious playroom, where learning and imagination come alive! 🌈" },
-  { src: "/images/backyard_playground.jpeg", caption: "Our secure backyard playground, perfect for active outdoor adventures! ☀️" },
-  { src: "/images/sensory_toys_sorting.jpeg", caption: "Sensory exploration and sorting activities to build fine motor skills. 🧩" },
-  { src: "/images/outdoor_play_area.jpeg", caption: "An outdoor play environment designed for safe discovery and fun. 🌿" },
-  { src: "/images/toy_storage_and_first_aid.jpeg", caption: "Organized toy stations with safety and care at the heart of everything. 🧸" },
-  { src: "/images/outdoor_seating_and_easel.jpeg", caption: "Creative art easels and outdoor spaces to inspire young artists! 🎨" },
-  { src: "/images/cozy_sofa_and_activity_table.jpeg", caption: "A cozy reading corner and dedicated tables for active learning. 📚" },
-  { src: "/images/building_blocks_and_dinosaurs.jpeg", caption: "Building dreams and exploring history with blocks and dinosaurs! 🦖" },
-  { src: "/images/reading_corner_and_lego_rug.jpeg", caption: "Comfortable spaces to sit back, read, and create with LEGO. 🧱" },
-  { src: "/images/wooden_monkey_stacking_toy.jpeg", caption: "Eco-friendly wooden toys to foster concentration and coordination. 🐒" },
-  { src: "/images/match_and_count_sorting_tray.jpeg", caption: "Early mathematics and cognitive development through interactive play. 🔢" },
-  { src: "/images/water_play_pipettes_and_funnels.jpeg", caption: "Fascinating water play experiments to spark scientific curiosity! 💧" },
-  { src: "/images/color_recognition_sensory_tray.jpeg", caption: "Vibrant color recognition trays that make sensory learning a joy. ✨" },
-  { src: "/images/gardening_planter_box.jpeg", caption: "Budding gardeners learning where veggies grow in our planter box. 🌱" },
-  { src: "/images/children_nature_walk_outing.jpeg", caption: "Exciting nature walks and local outings to connect with the world. 🚶" },
-  { src: "/images/number_learning_table.jpeg", caption: "Interactive number learning stations to build a solid foundation. 🎓" },
-  { src: "/images/Child_daycare_room_background_202606051617.jpeg", caption: "A warm, bright, and secure daycare setting for early childhood exploration. ☀️" },
-  { src: "/images/hero/background.jpeg", caption: "Premium day childcare settings where children feel safe, happy, and valued. ❤️" },
-  { src: "/images/hero/children-in-garden.jpeg", caption: "Outdoor physical activities in our garden helping kids build motor skills. 🌿" },
-  { src: "/images/hero/children-sorting.jpeg", caption: "Sensory development games that prepare children for future learning. 🧠" },
-  { src: "/images/with kids/Add_children_to_daycare_setup_202606061350.jpeg", caption: "Hands-on creative arts and crafts to develop imagination and motor skills. 🎨" },
-  { src: "/images/with kids/Children_playing_in_playground_202606051646.jpeg", caption: "Active outdoor play with peers to foster social bonds and coordination. ⚽" },
-  { src: "/images/with kids/Daycare_setting_for_young_children_202606061434.jpeg", caption: "A nurturing early education setting filled with positive peer interactions. 🌟" },
-  { src: "/images/with kids/turn_this_into_daycare_settings_202606061354.jpeg", caption: "Interactive group circle times and play-based learning spaces. 🧸" },
-];
+// const defaultGalleryList = [
+interface GalleryItem {
+  src: string;
+  caption: string;
+}
+//   { src: "/images/playroom_wide_view.jpeg", caption: "Welcome to our spacious playroom, where learning and imagination come alive! 🌈" },
+//   { src: "/images/backyard_playground.jpeg", caption: "Our secure backyard playground, perfect for active outdoor adventures! ☀️" },
+//   { src: "/images/sensory_toys_sorting.jpeg", caption: "Sensory exploration and sorting activities to build fine motor skills. 🧩" },
+//   { src: "/images/outdoor_play_area.jpeg", caption: "An outdoor play environment designed for safe discovery and fun. 🌿" },
+//   { src: "/images/toy_storage_and_first_aid.jpeg", caption: "Organized toy stations with safety and care at the heart of everything. 🧸" },
+//   { src: "/images/outdoor_seating_and_easel.jpeg", caption: "Creative art easels and outdoor spaces to inspire young artists! 🎨" },
+//   { src: "/images/cozy_sofa_and_activity_table.jpeg", caption: "A cozy reading corner and dedicated tables for active learning. 📚" },
+//   { src: "/images/building_blocks_and_dinosaurs.jpeg", caption: "Building dreams and exploring history with blocks and dinosaurs! 🦖" },
+//   { src: "/images/reading_corner_and_lego_rug.jpeg", caption: "Comfortable spaces to sit back, read, and create with LEGO. 🧱" },
+//   { src: "/images/wooden_monkey_stacking_toy.jpeg", caption: "Eco-friendly wooden toys to foster concentration and coordination. 🐒" },
+//   { src: "/images/match_and_count_sorting_tray.jpeg", caption: "Early mathematics and cognitive development through interactive play. 🔢" },
+//   { src: "/images/water_play_pipettes_and_funnels.jpeg", caption: "Fascinating water play experiments to spark scientific curiosity! 💧" },
+//   { src: "/images/color_recognition_sensory_tray.jpeg", caption: "Vibrant color recognition trays that make sensory learning a joy. ✨" },
+//   { src: "/images/gardening_planter_box.jpeg", caption: "Budding gardeners learning where veggies grow in our planter box. 🌱" },
+//   { src: "/images/children_nature_walk_outing.jpeg", caption: "Exciting nature walks and local outings to connect with the world. 🚶" },
+//   { src: "/images/number_learning_table.jpeg", caption: "Interactive number learning stations to build a solid foundation. 🎓" },
+//   { src: "/images/Child_daycare_room_background_202606051617.jpeg", caption: "A warm, bright, and secure daycare setting for early childhood exploration. ☀️" },
+//   { src: "/images/hero/background.jpeg", caption: "Premium day childcare settings where children feel safe, happy, and valued. ❤️" },
+//   { src: "/images/hero/children-in-garden.jpeg", caption: "Outdoor physical activities in our garden helping kids build motor skills. 🌿" },
+//   { src: "/images/hero/children-sorting.jpeg", caption: "Sensory development games that prepare children for future learning. 🧠" },
+//   { src: "/images/with kids/Add_children_to_daycare_setup_202606061350.jpeg", caption: "Hands-on creative arts and crafts to develop imagination and motor skills. 🎨" },
+//   { src: "/images/with kids/Children_playing_in_playground_202606051646.jpeg", caption: "Active outdoor play with peers to foster social bonds and coordination. ⚽" },
+//   { src: "/images/with kids/Daycare_setting_for_young_children_202606061434.jpeg", caption: "A nurturing early education setting filled with positive peer interactions. 🌟" },
+//   { src: "/images/with kids/turn_this_into_daycare_settings_202606061354.jpeg", caption: "Interactive group circle times and play-based learning spaces. 🧸" },
+// ];
 
 export default function GalleryMasonry() {
-  const [galleryList, setGalleryList] = useState(defaultGalleryList);
+  const [galleryList, setGalleryList] = useState<GalleryItem[]>([]);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   React.useEffect(() => {
     if (selectedIdx !== null) {
@@ -63,10 +68,12 @@ export default function GalleryMasonry() {
             src: urlForImage(item.image).url(),
             caption: item.caption
           }));
-          setGalleryList([...cmsItems, ...defaultGalleryList]);
+          setGalleryList([...cmsItems]);
         }
       } catch (error) {
         console.error("Failed to fetch gallery items from Sanity:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchGallery();
@@ -154,7 +161,15 @@ export default function GalleryMasonry() {
       {/* 2. Gallery Masonry Grid */}
       <Section background="light" id="gallery-showcase" className="py-12 md:py-16">
         <div className="max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto columns-2 lg:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6 px-2 sm:px-4">
-          {galleryList.map((item, index) => (
+          {isLoading ? (
+            Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="break-inside-avoid bg-slate-200 rounded-2xl overflow-hidden shadow-sm animate-pulse mb-4 sm:mb-6"
+                style={{ height: `${i % 2 === 0 ? 300 : 200}px` }}
+              />
+            ))
+          ) : galleryList.map((item, index) => (
             <div
               key={index}
               onClick={() => openReel(index)}
