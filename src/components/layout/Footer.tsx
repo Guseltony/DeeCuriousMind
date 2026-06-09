@@ -75,6 +75,9 @@ export default function Footer() {
               <Link href="/gallery" className="hover:text-yellow-200 transition-colors">Photo Gallery</Link>
             </li>
             <li>
+              <Link href="/blog" className="hover:text-yellow-200 transition-colors">Blog & Tips</Link>
+            </li>
+            <li>
               <Link href="/contact" className="hover:text-yellow-200 transition-colors">Contact & Enquiries</Link>
             </li>
           </ul>

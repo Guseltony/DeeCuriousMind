@@ -6,7 +6,9 @@ import faq from "./schemas/faq";
 import heroSlide from "./schemas/heroSlide";
 import review from "./schemas/review";
 import service from "./schemas/service";
+import blogPost from "./schemas/blogPost";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [announcement, summerClub, galleryItem, faq, heroSlide, review, service],
+  types: [announcement, summerClub, galleryItem, faq, heroSlide, review, service, blogPost],
 };
+
