@@ -177,7 +177,9 @@ export default function GalleryMasonry() {
             >
               <img
                 src={item.src}
-                alt={`Gallery showcase ${index + 1}`}
+                alt={item.caption
+                  ? item.caption.replace(/[🌈☀️🧩🌿🧸🎨📚🦖🧱🐒🔢💧✨🌱🚶🎓❤️🧠⚽🌟]/gu, "").trim()
+                  : `Dees Curious Minds childcare setting – Gillingham, Kent`}
                 className="w-full h-auto object-cover block"
                 loading="lazy"
               />
@@ -203,7 +205,9 @@ export default function GalleryMasonry() {
               >
                 <img
                   src={item.src}
-                  alt={`Reel view ${index + 1}`}
+                  alt={item.caption
+                    ? item.caption.replace(/[🌈☀️🧩🌿🧸🎨📚🦖🧱🐒🔢💧✨🌱🚶🎓❤️🧠⚽🌟]/gu, "").trim()
+                    : `Dees Curious Minds childcare environment – Gillingham, Kent`}
                   className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
                 />
 

@@ -104,21 +104,24 @@ export default function Footer() {
         {/* Contact Info */}
         <div className="col-span-2 lg:col-span-1 space-y-4 md:space-y-6">
           <h4 className="text-white font-semibold font-poppins text-sm md:text-lg">Contact Us</h4>
-          <ul className="space-y-2 md:space-y-3.5 text-xs sm:text-sm">
-            <li className="flex items-start gap-2 md:gap-3">
-              <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-200 shrink-0 mt-0.5" />
-              <span className="text-slate-100">Gillingham, Kent</span>
-            </li>
-            <li className="flex items-center gap-2 md:gap-3">
-              <Phone className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-200 shrink-0" />
-              <a href="tel:07840066028" className="hover:text-yellow-200 transition-colors text-slate-100">07840066028</a>
-            </li>
-            <li className="flex items-center gap-2 md:gap-3">
-              <Mail className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-200 shrink-0" />
-              <a href="mailto:Deescuriousminds@gmail.com" className="hover:text-yellow-200 transition-colors text-slate-100">Deescuriousminds@gmail.com</a>
-            </li>
-          </ul>
+          <address className="not-italic">
+            <ul className="space-y-2 md:space-y-3.5 text-xs sm:text-sm">
+              <li className="flex items-start gap-2 md:gap-3">
+                <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-200 shrink-0 mt-0.5" />
+                <span className="text-slate-100">Gillingham, Kent</span>
+              </li>
+              <li className="flex items-center gap-2 md:gap-3">
+                <Phone className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-200 shrink-0" />
+                <a href="tel:07840066028" className="hover:text-yellow-200 transition-colors text-slate-100">07840066028</a>
+              </li>
+              <li className="flex items-center gap-2 md:gap-3">
+                <Mail className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-200 shrink-0" />
+                <a href="mailto:Deescuriousminds@gmail.com" className="hover:text-yellow-200 transition-colors text-slate-100">Deescuriousminds@gmail.com</a>
+              </li>
+            </ul>
+          </address>
         </div>
+
       </div>
 
       {/* Lower Footer */}
