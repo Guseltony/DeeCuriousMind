@@ -17,14 +17,28 @@ export const metadata: Metadata = {
     "Montessori environment photos",
     "Dees Curious Minds",
   ],
+  alternates: {
+    canonical: "https://deescuriousminds.co.uk/gallery",
+  },
   openGraph: {
-    title: "Childcare playroom & setting gallery | Dees Curious Minds",
+    title: "Childcare playroom & setting gallery | Dees Curious Minds Gillingham",
     description:
       "A look inside the home-like learning environments, quiet reading corners, creative art desks, and secure gardens at Dees Curious Minds.",
+    url: "https://deescuriousminds.co.uk/gallery",
+    siteName: "Dees Curious Minds",
     type: "website",
     locale: "en_GB",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dees Curious Minds playroom and learning environment gallery",
+      },
+    ],
   },
 };
+
 
 export default function GalleryPage() {
   return (

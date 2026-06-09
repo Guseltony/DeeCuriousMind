@@ -17,7 +17,8 @@ import { urlForImage } from "@/sanity/lib/image";
 
 export const metadata: Metadata = {
   title: "Dees Curious Minds | Premium Childcare & Childminding Gillingham",
-  description: "Looking for premium, trustworthy childcare in Gillingham? Dees Curious Minds offers a secure home setting, EYFS curriculum alignment, and dedicated professional care for children aged 6 months to 5 years.",
+  description:
+    "Looking for premium, trustworthy childcare in Gillingham? Dees Curious Minds offers a secure home setting, EYFS curriculum alignment, and dedicated professional care for children aged 6 months to 5 years.",
   keywords: [
     "childcare Gillingham",
     "childminder Gillingham",
@@ -25,17 +26,30 @@ export const metadata: Metadata = {
     "home nursery Gillingham",
     "EYFS childcare Gillingham",
     "Montessori play Gillingham",
-    "Dees Curious Minds"
+    "Dees Curious Minds",
   ],
+  alternates: {
+    canonical: "https://deescuriousminds.co.uk",
+  },
   openGraph: {
     title: "Dees Curious Minds | Premium Childcare & Childminding Gillingham",
-    description: "EYFS-aligned childcare and sensory play in a secure, nurturing home setting in Gillingham, Kent.",
+    description:
+      "EYFS-aligned childcare and sensory play in a secure, nurturing home setting in Gillingham, Kent.",
     url: "https://deescuriousminds.co.uk",
     siteName: "Dees Curious Minds",
     type: "website",
     locale: "en_GB",
-  }
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dees Curious Minds – Premium Childcare in Gillingham, Kent",
+      },
+    ],
+  },
 };
+
 
 
 async function getHeroSlides() {

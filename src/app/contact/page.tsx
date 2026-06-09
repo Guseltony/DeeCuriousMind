@@ -17,14 +17,28 @@ export const metadata: Metadata = {
     "Gillingham childminding openings",
     "Dees Curious Minds",
   ],
+  alternates: {
+    canonical: "https://deescuriousminds.co.uk/contact",
+  },
   openGraph: {
     title: "Contact Denise | Childcare Enquiry & Visits Gillingham",
     description:
       "Have questions or want to arrange a setting visit? Contact Denise at Dees Curious Minds Childcare in Gillingham, Kent.",
+    url: "https://deescuriousminds.co.uk/contact",
+    siteName: "Dees Curious Minds",
     type: "website",
     locale: "en_GB",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Contact Dees Curious Minds childcare in Gillingham",
+      },
+    ],
   },
 };
+
 
 export default function ContactPage() {
   return (

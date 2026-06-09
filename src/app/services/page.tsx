@@ -20,14 +20,28 @@ export const metadata: Metadata = {
     "toddler sensory activities",
     "Dees Curious Minds",
   ],
+  alternates: {
+    canonical: "https://deescuriousminds.co.uk/services",
+  },
   openGraph: {
-    title: "Childcare & Childminding Services | Dees Curious Minds",
+    title: "Childcare & Childminding Services | Dees Curious Minds Gillingham",
     description:
       "High-quality early learning and development services in Gillingham. Guided play, social milestones, language rich environment, and outdoor exploration.",
+    url: "https://deescuriousminds.co.uk/services",
+    siteName: "Dees Curious Minds",
     type: "website",
     locale: "en_GB",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Childcare services at Dees Curious Minds Gillingham",
+      },
+    ],
   },
 };
+
 
 export default function ServicesPage() {
   return (
