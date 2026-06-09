@@ -12,6 +12,7 @@ import LearningApproachSection from "@/components/sections/LearningApproachSecti
 import GalleryPreviewSection from "@/components/sections/GalleryPreviewSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactPreviewSection from "@/components/sections/ContactPreviewSection";
+import BlogPreviewSection from "@/components/sections/BlogPreviewSection";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 
@@ -115,7 +116,10 @@ export default async function Home() {
         {/* 7. Parent Testimonials Carousel */}
         <TestimonialsSection />
 
-        {/* 8. Contact Details & Inquiry Form */}
+        {/* 8. Blog Preview — only renders when posts exist in Sanity */}
+        <BlogPreviewSection />
+
+        {/* 9. Contact Details & Inquiry Form */}
         <ContactPreviewSection />
       </div>
 
