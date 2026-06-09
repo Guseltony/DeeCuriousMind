@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     "Dees Curious Minds FAQ",
   ],
   alternates: {
-    canonical: "https://deescuriousminds.co.uk/faqs",
+    canonical: "https://www.deescuriousminds.co.uk/faqs",
   },
   openGraph: {
     title: "Frequently Asked Questions | Dees Curious Minds Gillingham",
     description:
       "Answers to common questions about our childcare setting, opening hours, EYFS framework, enrollment, and daily routine in Gillingham, Kent.",
-    url: "https://deescuriousminds.co.uk/faqs",
+    url: "https://www.deescuriousminds.co.uk/faqs",
     siteName: "Dees Curious Minds",
     type: "website",
     locale: "en_GB",

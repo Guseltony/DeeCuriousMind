@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     "Dees Curious Minds",
   ],
   alternates: {
-    canonical: "https://deescuriousminds.co.uk/contact",
+    canonical: "https://www.deescuriousminds.co.uk/contact",
   },
   openGraph: {
     title: "Contact Denise | Childcare Enquiry & Visits Gillingham",
     description:
       "Have questions or want to arrange a setting visit? Contact Denise at Dees Curious Minds Childcare in Gillingham, Kent.",
-    url: "https://deescuriousminds.co.uk/contact",
+    url: "https://www.deescuriousminds.co.uk/contact",
     siteName: "Dees Curious Minds",
     type: "website",
     locale: "en_GB",

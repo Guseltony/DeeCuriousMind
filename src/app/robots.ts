@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/studio/", "/studio"],
       },
     ],
-    sitemap: "https://deescuriousminds.co.uk/sitemap.xml",
-    host: "https://deescuriousminds.co.uk",
+    sitemap: "https://www.deescuriousminds.co.uk/sitemap.xml",
+    host: "https://www.deescuriousminds.co.uk",
   };
 }

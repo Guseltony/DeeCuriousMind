@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     "Dees Curious Minds",
   ],
   alternates: {
-    canonical: "https://deescuriousminds.co.uk/services",
+    canonical: "https://www.deescuriousminds.co.uk/services",
   },
   openGraph: {
     title: "Childcare & Childminding Services | Dees Curious Minds Gillingham",
     description:
       "High-quality early learning and development services in Gillingham. Guided play, social milestones, language rich environment, and outdoor exploration.",
-    url: "https://deescuriousminds.co.uk/services",
+    url: "https://www.deescuriousminds.co.uk/services",
     siteName: "Dees Curious Minds",
     type: "website",
     locale: "en_GB",

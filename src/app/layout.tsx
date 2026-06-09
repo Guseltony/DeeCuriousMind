@@ -19,7 +19,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   // metadataBase is required so Next.js can resolve relative og:image URLs correctly
-  metadataBase: new URL("https://deescuriousminds.co.uk"),
+  metadataBase: new URL("https://www.deescuriousminds.co.uk"),
   title: {
     default: "Dees Curious Minds | Premium Childcare & Childminding Gillingham",
     template: "%s | Dees Curious Minds",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
       "Discover a safe, nurturing, and creative childcare environment at Dees Curious Minds in Gillingham, Kent. Learning through play and personal attention for every child.",
     type: "website",
     locale: "en_GB",
-    url: "https://deescuriousminds.co.uk",
+    url: "https://www.deescuriousminds.co.uk",
     siteName: "Dees Curious Minds",
     images: [
       {
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://deescuriousminds.co.uk",
+    canonical: "https://www.deescuriousminds.co.uk",
   },
   verification: {
     google: "google52936d136425e2e5",

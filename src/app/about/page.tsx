@@ -27,12 +27,12 @@ export function generateMetadata(): Metadata {
       "Dees Curious Minds",
     ],
     alternates: {
-      canonical: "https://deescuriousminds.co.uk/about",
+      canonical: "https://www.deescuriousminds.co.uk/about",
     },
     openGraph: {
       title: "About Denise | Dees Curious Minds Childcare Gillingham",
       description: `Meet Denise, an Ofsted-registered childminder in Gillingham. ${years}+ years experience in nursery care, childminding, and after-school care.`,
-      url: "https://deescuriousminds.co.uk/about",
+      url: "https://www.deescuriousminds.co.uk/about",
       siteName: "Dees Curious Minds",
       type: "website",
       locale: "en_GB",

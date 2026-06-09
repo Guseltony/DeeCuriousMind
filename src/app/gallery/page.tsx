@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     "Dees Curious Minds",
   ],
   alternates: {
-    canonical: "https://deescuriousminds.co.uk/gallery",
+    canonical: "https://www.deescuriousminds.co.uk/gallery",
   },
   openGraph: {
     title: "Childcare playroom & setting gallery | Dees Curious Minds Gillingham",
     description:
       "A look inside the home-like learning environments, quiet reading corners, creative art desks, and secure gardens at Dees Curious Minds.",
-    url: "https://deescuriousminds.co.uk/gallery",
+    url: "https://www.deescuriousminds.co.uk/gallery",
     siteName: "Dees Curious Minds",
     type: "website",
     locale: "en_GB",

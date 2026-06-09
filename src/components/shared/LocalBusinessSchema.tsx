@@ -12,17 +12,17 @@ export default function LocalBusinessSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ChildCare",
-    "@id": "https://deescuriousminds.co.uk/#business",
+    "@id": "https://www.deescuriousminds.co.uk/#business",
     name: "Dees Curious Minds",
     alternateName: "Dees Curious Minds Childcare",
     description:
       "Ofsted-registered childminding and childcare service in Gillingham, Kent. EYFS-aligned, play-based learning in a secure home-from-home setting. Accepting children aged 6 months to 5 years.",
-    url: "https://deescuriousminds.co.uk",
+    url: "https://www.deescuriousminds.co.uk",
     telephone: "+447840066028",
     email: "Deescuriousminds@gmail.com",
     priceRange: "££",
-    image: "https://deescuriousminds.co.uk/dees curious minds logo.png",
-    logo: "https://deescuriousminds.co.uk/black-logo.webp",
+    image: "https://www.deescuriousminds.co.uk/dees curious minds logo.png",
+    logo: "https://www.deescuriousminds.co.uk/black-logo.webp",
     address: {
       "@type": "PostalAddress",
       streetAddress: "6 Merlin Way",
@@ -55,7 +55,7 @@ export default function LocalBusinessSchema() {
       description:
         "NVQ Level 3 CCLD qualified childminder with over 20 years of early years experience, including Nursery Officer, Nursery Nurse, and After School Manager roles.",
       worksFor: {
-        "@id": "https://deescuriousminds.co.uk/#business",
+        "@id": "https://www.deescuriousminds.co.uk/#business",
       },
     },
     areaServed: [
