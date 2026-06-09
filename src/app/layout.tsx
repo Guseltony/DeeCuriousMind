@@ -25,16 +25,40 @@ export const metadata: Metadata = {
     template: "%s | Dees Curious Minds",
   },
   description:
-    "Dees Curious Minds provides a warm, trustworthy, and safe home-away-from-home childcare environment in Gillingham, Kent. EYFS-aligned, personal attention, and learning through play.",
+    "Dees Curious Minds is a registered childminder and home daycare in Gillingham, Kent. Safe, nurturing childcare and pre-nursery provision for children aged 6 months to 5 years. EYFS-aligned, personal attention, and learning through play.",
   keywords: [
-    "childcare Gillingham",
-    "childminding Gillingham",
+    // Primary — what Denise offers
     "childminder Gillingham",
+    "childminding Gillingham",
+    "childcare Gillingham",
+    // Daycare variations
+    "daycare Gillingham",
+    "day care Gillingham",
+    "baby daycare Gillingham",
+    "toddler daycare Gillingham",
+    // Nursery variations
+    "nursery Gillingham",
+    "pre-nursery Gillingham",
+    "pre nursery Gillingham",
+    "home nursery Gillingham",
+    "private nursery Gillingham",
+    // Early years
+    "early years childcare Gillingham",
     "EYFS childcare Kent",
     "early learning Gillingham",
-    "learning through play",
+    // Location variants
+    "childcare Medway",
+    "childminder Medway",
+    "childcare ME7",
+    "childminder Kent",
+    // Other care types parents search for
+    "after school care Gillingham",
+    "wraparound care Gillingham",
+    "registered childminder Gillingham",
     "Ofsted childminder Gillingham",
+    // Brand
     "Dees Curious Minds",
+    "learning through play",
   ],
   authors: [{ name: "Denise", url: "https://deescuriousminds.co.uk/about" }],
   creator: "Dees Curious Minds",

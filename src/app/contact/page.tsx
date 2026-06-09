@@ -11,11 +11,15 @@ export const metadata: Metadata = {
   description:
     "Get in touch with Denise at Dees Curious Minds in Gillingham, Kent. Submit a childcare enquiry, check open spaces, ask questions, or arrange a setting tour.",
   keywords: [
-    "Contact childminder Gillingham",
+    "contact childminder Gillingham",
     "enquire childcare Gillingham",
-    "nanny Gillingham contact",
-    "Gillingham childminding openings",
-    "Dees Curious Minds",
+    "enquire daycare Gillingham",
+    "nursery enquiry Gillingham",
+    "childminding spaces Gillingham",
+    "Gillingham childcare openings",
+    "book childminder Gillingham",
+    "childminder visit Gillingham",
+    "Dees Curious Minds contact",
   ],
   alternates: {
     canonical: "https://www.deescuriousminds.co.uk/contact",

@@ -18,14 +18,21 @@ import { urlForImage } from "@/sanity/lib/image";
 export const metadata: Metadata = {
   title: "Dees Curious Minds | Premium Childcare & Childminding Gillingham",
   description:
-    "Looking for premium, trustworthy childcare in Gillingham? Dees Curious Minds offers a secure home setting, EYFS curriculum alignment, and dedicated professional care for children aged 6 months to 5 years.",
+    "Looking for trusted childcare, daycare or a registered childminder in Gillingham? Dees Curious Minds offers a warm home nursery setting in Gillingham, Kent. EYFS-aligned learning, personal attention, and safe, nurturing care for children aged 6 months to 5 years.",
   keywords: [
-    "childcare Gillingham",
     "childminder Gillingham",
-    "daycare Gillingham Kent",
+    "childcare Gillingham",
+    "daycare Gillingham",
+    "nursery Gillingham",
+    "pre-nursery Gillingham",
     "home nursery Gillingham",
+    "childcare near me Gillingham",
     "EYFS childcare Gillingham",
     "Montessori play Gillingham",
+    "registered childminder Gillingham",
+    "Ofsted childminder Gillingham",
+    "childcare Medway",
+    "childminder Medway",
     "Dees Curious Minds",
   ],
   alternates: {

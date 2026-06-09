@@ -14,10 +14,16 @@ export const metadata: Metadata = {
     "Explore early years childcare services at Dees Curious Minds in Gillingham. Play-based learning, cognitive milestones, sensory explorations, creative arts, and school readiness.",
   keywords: [
     "childcare services Gillingham",
+    "daycare services Gillingham",
+    "nursery activities Gillingham",
+    "pre-nursery Gillingham",
     "early years learning Kent",
-    "play-based childcare",
+    "EYFS activities Gillingham",
+    "play-based childcare Gillingham",
     "school readiness childminder",
     "toddler sensory activities",
+    "baby care Gillingham",
+    "childminder Medway",
     "Dees Curious Minds",
   ],
   alternates: {

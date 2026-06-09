@@ -16,8 +16,12 @@ export const metadata: Metadata = {
   keywords: [
     "childcare FAQs Gillingham",
     "childminder questions Gillingham",
+    "daycare questions Gillingham",
+    "nursery questions Gillingham",
     "EYFS childcare questions",
     "childcare enrollment Gillingham",
+    "how to find childminder Gillingham",
+    "childcare opening hours Gillingham",
     "Dees Curious Minds FAQ",
   ],
   alternates: {
