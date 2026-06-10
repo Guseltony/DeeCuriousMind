@@ -8,7 +8,7 @@ async function getBlogSlugs(): Promise<{ slug: string; publishedAt: string }[]> 
     return await client.fetch(
       `*[_type == "blogPost"] { "slug": slug.current, publishedAt }`,
       {},
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 0 } }
     );
   } catch {
     return [];

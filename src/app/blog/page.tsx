@@ -70,7 +70,7 @@ async function getBlogPosts(): Promise<BlogPost[]> {
         mainImage
       }`,
       {},
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 0 } }
     );
     return posts ?? [];
   } catch (error) {

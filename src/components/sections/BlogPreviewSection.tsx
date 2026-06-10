@@ -23,7 +23,7 @@ async function getLatestPosts(): Promise<BlogPost[]> {
         _id, title, slug, publishedAt, author, category, readingTime, excerpt, mainImage
       }`,
       {},
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 0 } }
     );
     return posts ?? [];
   } catch {

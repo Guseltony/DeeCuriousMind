@@ -56,7 +56,7 @@ async function getFaqs(): Promise<FaqItem[]> {
     const data = await client.fetch(
       `*[_type == "faq"] | order(order asc) { question, answer }`,
       {},
-      { next: { revalidate: 3600 } } // Cache for 1 hour
+      { next: { revalidate: 0 } } // Disable caching to show updates immediately
     );
     if (data && data.length > 0) return data;
   } catch (error) {

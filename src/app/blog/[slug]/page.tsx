@@ -41,7 +41,7 @@ async function getPost(slug: string): Promise<BlogPost | null> {
         body
       }`,
       { slug },
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 0 } }
     );
   } catch {
     return null;
@@ -55,7 +55,7 @@ async function getRelatedPosts(currentId: string, category: string): Promise<Blo
         _id, title, slug, publishedAt, author, category, readingTime, excerpt, mainImage
       }`,
       { currentId, category },
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 0 } }
     );
   } catch {
     return [];
@@ -67,7 +67,7 @@ async function getAllSlugs(): Promise<{ slug: string }[]> {
     return await client.fetch(
       `*[_type == "blogPost"] { "slug": slug.current }`,
       {},
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 0 } }
     );
   } catch {
     return [];
