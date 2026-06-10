@@ -53,7 +53,7 @@ export default function HeroSection({ initialSlides }: { initialSlides?: HeroSli
           image,
           "videoUrl": video.asset->url
         }`);
-        
+
         if (data && data.length > 0) {
           const cmsItems = data.map((item: any) => ({
             type: item.mediaType === "video" ? "video" : "image",
@@ -62,14 +62,14 @@ export default function HeroSection({ initialSlides }: { initialSlides?: HeroSli
             title: item.title,
             description: item.description,
           }));
-          
+
           // Ensure videos always come first
           cmsItems.sort((a: any, b: any) => {
             if (a.type === 'video' && b.type !== 'video') return -1;
             if (b.type === 'video' && a.type !== 'video') return 1;
             return 0;
           });
-          
+
           setHeroSlides(cmsItems);
         }
       } catch (error) {
@@ -83,7 +83,7 @@ export default function HeroSection({ initialSlides }: { initialSlides?: HeroSli
 
   useEffect(() => {
     if (heroSlides.length <= 1) return;
-    
+
     // Pause timer if current slide is video. The video's onEnded event will handle the transition.
     if (heroSlides[currentIdx].type === 'video') return;
 
@@ -102,7 +102,7 @@ export default function HeroSection({ initialSlides }: { initialSlides?: HeroSli
   }
 
   return (
-    <section className="relative min-h-[90vh] lg:min-h-[85vh] flex items-center pt-28 pb-20 px-4 sm:px-6 md:px-8 lg:px-12 w-full overflow-hidden bg-slate-950">
+    <section className="relative min-h-[90vh] flex items-center pt-28 pb-20 px-4 sm:px-6 md:px-8 lg:px-12 w-full overflow-hidden bg-slate-950">
       {/* Background Slideshow */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
