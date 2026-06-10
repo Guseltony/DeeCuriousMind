@@ -174,8 +174,11 @@ export default function Header() {
                         key={link.name}
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`text-lg font-semibold font-inter py-2 border-b border-slate-50 transition-colors ${isActive ? "text-primary" : "text-text-secondary hover:text-text-primary"
-                          }`}
+                        className={`text-lg font-semibold font-inter py-2.5 px-4 rounded-xl transition-colors ${
+                          isActive 
+                            ? "text-primary bg-primary/10" 
+                            : "text-text-secondary hover:text-text-primary hover:bg-slate-50"
+                        }`}
                       >
                         {link.name}
                       </Link>
