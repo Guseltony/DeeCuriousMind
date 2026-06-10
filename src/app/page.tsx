@@ -66,15 +66,24 @@ async function getHeroSlides() {
       title,
       badge,
       description,
-      image
+      mediaType,
+      image,
+      "videoUrl": video.asset->url
     }`);
     if (data && data.length > 0) {
-      return data.map((item: any) => ({
-        image: urlForImage(item.image).url(),
+      const slides = data.map((item: any) => ({
+        type: item.mediaType === "video" ? "video" : "image",
+        image: item.mediaType === "video" ? item.videoUrl : (item.image ? urlForImage(item.image).url() : ""),
         badge: item.badge,
         title: item.title,
         description: item.description,
       }));
+      // Ensure videos always come first
+      return slides.sort((a: any, b: any) => {
+        if (a.type === 'video' && b.type !== 'video') return -1;
+        if (b.type === 'video' && a.type !== 'video') return 1;
+        return 0;
+      });
     }
   } catch (error) {
     console.error("Failed to fetch hero slides from Sanity:", error);

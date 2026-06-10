@@ -10,6 +10,7 @@ import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 
 interface HeroSlide {
+  type?: 'video' | 'image';
   image: string;
   badge: string;
   title: string;
@@ -35,8 +36,6 @@ interface HeroSlide {
 //     title: "Discovering Nature in Our Secure Playground",
 //     description: "Fresh air, gardening, and physical outdoor play in our fully equipped, safe garden setting. Helping children build motor skills and healthy, active habits.",
 //   },
-// ];
-
 export default function HeroSection({ initialSlides }: { initialSlides?: HeroSlide[] } = {}) {
   const [heroSlides, setHeroSlides] = useState<HeroSlide[]>(initialSlides || []);
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -50,16 +49,28 @@ export default function HeroSection({ initialSlides }: { initialSlides?: HeroSli
           title,
           badge,
           description,
-          image
+          mediaType,
+          image,
+          "videoUrl": video.asset->url
         }`);
+        
         if (data && data.length > 0) {
-          const formattedSlides = data.map((item: any) => ({
-            image: urlForImage(item.image).url(),
+          const cmsItems = data.map((item: any) => ({
+            type: item.mediaType === "video" ? "video" : "image",
+            image: item.mediaType === "video" ? item.videoUrl : (item.image ? urlForImage(item.image).url() : ""),
             badge: item.badge,
             title: item.title,
             description: item.description,
           }));
-          setHeroSlides(formattedSlides);
+          
+          // Ensure videos always come first
+          cmsItems.sort((a: any, b: any) => {
+            if (a.type === 'video' && b.type !== 'video') return -1;
+            if (b.type === 'video' && a.type !== 'video') return 1;
+            return 0;
+          });
+          
+          setHeroSlides(cmsItems);
         }
       } catch (error) {
         console.error("Failed to fetch hero slides from Sanity:", error);
@@ -72,11 +83,15 @@ export default function HeroSection({ initialSlides }: { initialSlides?: HeroSli
 
   useEffect(() => {
     if (heroSlides.length <= 1) return;
+    
+    // Pause timer if current slide is video. The video's onEnded event will handle the transition.
+    if (heroSlides[currentIdx].type === 'video') return;
+
     const timer = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % heroSlides.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, [heroSlides.length]);
+  }, [heroSlides.length, currentIdx]);
 
   if (isLoading || heroSlides.length === 0) {
     return (
@@ -99,14 +114,25 @@ export default function HeroSection({ initialSlides }: { initialSlides?: HeroSli
             transition={{ duration: 1.2, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full"
           >
-            <Image
-              src={heroSlides[currentIdx].image}
-              alt={heroSlides[currentIdx].badge}
-              fill
-              priority={currentIdx === 0}
-              sizes="100vw"
-              className="object-cover object-center"
-            />
+            {heroSlides[currentIdx].type === 'video' ? (
+              <video
+                src={heroSlides[currentIdx].image}
+                autoPlay
+                muted
+                playsInline
+                onEnded={() => setCurrentIdx((prev) => (prev + 1) % heroSlides.length)}
+                className="w-full h-full object-cover object-center"
+              />
+            ) : (
+              <Image
+                src={heroSlides[currentIdx].image}
+                alt={heroSlides[currentIdx].badge}
+                fill
+                priority={currentIdx === 0}
+                sizes="100vw"
+                className="object-cover object-center"
+              />
+            )}
           </motion.div>
         </AnimatePresence>
 

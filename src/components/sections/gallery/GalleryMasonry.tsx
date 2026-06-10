@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Shield, Sparkles, Heart, Compass, X } from "lucide-react";
+import { Shield, Sparkles, Heart, Compass, X, Volume2, VolumeX } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Section from "../../shared/Section";
 import { client } from "@/sanity/lib/client";
@@ -10,6 +10,7 @@ import { urlForImage } from "@/sanity/lib/image";
 
 // const defaultGalleryList = [
 interface GalleryItem {
+  type?: 'video' | 'image';
   src: string;
   caption: string;
 }
@@ -43,6 +44,7 @@ export default function GalleryMasonry() {
   const [galleryList, setGalleryList] = useState<GalleryItem[]>([]);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
   React.useEffect(() => {
     if (selectedIdx !== null) {
@@ -60,15 +62,27 @@ export default function GalleryMasonry() {
       try {
         const data = await client.fetch(`*[_type == "galleryItem"] | order(order asc) {
           title,
+          caption,
+          mediaType,
           image,
-          caption
+          "videoUrl": video.asset->url
         }`);
+        
         if (data && data.length > 0) {
           const cmsItems = data.map((item: any) => ({
-            src: urlForImage(item.image).url(),
+            type: item.mediaType === "video" ? "video" : "image",
+            src: item.mediaType === "video" ? item.videoUrl : (item.image ? urlForImage(item.image).url() : ""),
             caption: item.caption
           }));
-          setGalleryList([...cmsItems]);
+          
+          // Ensure videos always come first
+          cmsItems.sort((a: any, b: any) => {
+            if (a.type === 'video' && b.type !== 'video') return -1;
+            if (b.type === 'video' && a.type !== 'video') return 1;
+            return 0;
+          });
+          
+          setGalleryList(cmsItems);
         }
       } catch (error) {
         console.error("Failed to fetch gallery items from Sanity:", error);
@@ -175,14 +189,25 @@ export default function GalleryMasonry() {
               onClick={() => openReel(index)}
               className="break-inside-avoid bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md hover:scale-[1.01] transition-all duration-300 group relative mb-4 sm:mb-6 cursor-pointer"
             >
-              <img
-                src={item.src}
-                alt={item.caption
-                  ? item.caption.replace(/[🌈☀️🧩🌿🧸🎨📚🦖🧱🐒🔢💧✨🌱🚶🎓❤️🧠⚽🌟]/gu, "").trim()
-                  : `Dees Curious Minds childcare setting – Gillingham, Kent`}
-                className="w-full h-auto object-cover block"
-                loading="lazy"
-              />
+              {item.type === 'video' ? (
+                <video
+                  src={item.src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto object-cover block"
+                />
+              ) : (
+                <img
+                  src={item.src}
+                  alt={item.caption
+                    ? item.caption.replace(/[🌈☀️🧩🌿🧸🎨📚🦖🧱🐒🔢💧✨🌱🚶🎓❤️🧠⚽🌟]/gu, "").trim()
+                    : `Dees Curious Minds childcare setting – Gillingham, Kent`}
+                  className="w-full h-auto object-cover block"
+                  loading="lazy"
+                />
+              )}
               <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </div>
           ))}
@@ -203,13 +228,34 @@ export default function GalleryMasonry() {
                 id={`reel-item-${index}`}
                 className="w-full h-full h-screen h-[100dvh] flex-shrink-0 snap-start relative bg-black overflow-hidden"
               >
-                <img
-                  src={item.src}
-                  alt={item.caption
-                    ? item.caption.replace(/[🌈☀️🧩🌿🧸🎨📚🦖🧱🐒🔢💧✨🌱🚶🎓❤️🧠⚽🌟]/gu, "").trim()
-                    : `Dees Curious Minds childcare environment – Gillingham, Kent`}
-                  className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
-                />
+                {item.type === 'video' ? (
+                  <>
+                    <video
+                      src={item.src}
+                      autoPlay
+                      loop
+                      muted={isMuted}
+                      playsInline
+                      onClick={() => setIsMuted(!isMuted)}
+                      className="absolute inset-0 w-full h-full object-cover select-none cursor-pointer"
+                    />
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 transition-opacity duration-300">
+                      {isMuted ? (
+                        <div className="bg-black/50 p-4 rounded-full backdrop-blur-sm animate-pulse">
+                          <VolumeX className="w-10 h-10 text-white" />
+                        </div>
+                      ) : null}
+                    </div>
+                  </>
+                ) : (
+                  <img
+                    src={item.src}
+                    alt={item.caption
+                      ? item.caption.replace(/[🌈☀️🧩🌿🧸🎨📚🦖🧱🐒🔢💧✨🌱🚶🎓❤️🧠⚽🌟]/gu, "").trim()
+                      : `Dees Curious Minds childcare environment – Gillingham, Kent`}
+                    className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+                  />
+                )}
 
                 {/* Top Header Label */}
                 <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/80 to-transparent p-4 flex items-center justify-between pointer-events-none z-20">

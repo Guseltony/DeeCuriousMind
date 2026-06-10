@@ -12,13 +12,35 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "mediaType",
+      title: "Media Type",
+      type: "string",
+      options: {
+        list: [
+          { title: "Image", value: "image" },
+          { title: "Video", value: "video" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "image",
+    }),
+    defineField({
       name: "image",
       title: "Image",
       type: "image",
       options: {
-        hotspot: true, // Enables visual cropping / centering in the Sanity Studio
+        hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
+      hidden: ({ parent }) => parent?.mediaType === "video",
+    }),
+    defineField({
+      name: "video",
+      title: "Video",
+      type: "file",
+      options: {
+        accept: "video/*",
+      },
+      hidden: ({ parent }) => parent?.mediaType !== "video",
     }),
     defineField({
       name: "category",
