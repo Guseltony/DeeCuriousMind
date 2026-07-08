@@ -7,6 +7,10 @@ import ServicesHero from "@/components/sections/services/ServicesHero";
 import CoreServices from "@/components/sections/services/CoreServices";
 import DailyActivities from "@/components/sections/services/DailyActivities";
 import ServicesCta from "@/components/sections/services/ServicesCta";
+import Section from "@/components/shared/Section";
+import { Award, Smile } from "lucide-react";
+import { client } from "@/sanity/lib/client";
+import FaqAccordion from "@/components/sections/faqs/FaqAccordion";
 
 export const metadata: Metadata = {
   title: "Our Childcare Services | Dees Curious Minds Gillingham",
@@ -48,10 +52,54 @@ export const metadata: Metadata = {
   },
 };
 
+interface FaqItem {
+  question: string;
+  answer: string;
+}
 
-export default function ServicesPage() {
+async function getFaqs(): Promise<FaqItem[]> {
+  try {
+    const data = await client.fetch(
+      `*[_type == "faq"] | order(order asc) { question, answer }`,
+      {},
+      { next: { revalidate: 0 } }
+    );
+    if (data && data.length > 0) return data;
+  } catch (error) {
+    console.error("Failed to fetch FAQs from Sanity:", error);
+  }
+  return [];
+}
+
+export default async function ServicesPage() {
+  const faqs = await getFaqs();
+
+  const faqSchema =
+    faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
+      {/* FAQPage JSON-LD for Google rich results */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+
       {/* Sticky Header Navigation */}
       <Header />
 
@@ -65,6 +113,34 @@ export default function ServicesPage() {
 
         {/* 3. Typical Daily Routine Timeline */}
         <DailyActivities />
+
+        {/* FAQs Accordion Section */}
+        {faqs.length > 0 && (
+          <Section background="light" id="faqs-list" className="py-12 md:py-16 relative">
+            <div className="max-w-4xl mx-auto text-center mb-10 space-y-3">
+              <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-semibold tracking-wide uppercase">
+                Got Questions?
+              </span>
+              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-text-primary leading-tight font-poppins">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-sm sm:text-base text-text-secondary font-inter max-w-xl mx-auto leading-relaxed">
+                Find quick answers to common questions about our openings, settings, daily routine, and childcare details.
+              </p>
+            </div>
+            
+            <div className="relative">
+              <div className="absolute top-10 left-10 text-primary/5 pointer-events-none -z-10 select-none hidden lg:block">
+                <Award className="w-16 h-16 md:w-20 md:h-20 rotate-12" />
+              </div>
+              <div className="absolute bottom-10 right-10 text-secondary/5 pointer-events-none -z-10 select-none hidden lg:block">
+                <Smile className="w-16 h-16 md:w-20 md:h-20 -rotate-12" />
+              </div>
+              
+              <FaqAccordion faqs={faqs} />
+            </div>
+          </Section>
+        )}
 
         {/* 4. Final Call to Action */}
         <ServicesCta />
