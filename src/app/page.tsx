@@ -60,6 +60,32 @@ export const metadata: Metadata = {
 
 
 
+async function getActiveHolidayClubs() {
+  try {
+    const data = await client.fetch(
+      `*[_type == "holidayClub" && status == "active" && !(_id in path('drafts.**'))] | order(order asc) {
+        title,
+        description,
+        "flyerImage": flyerImage.asset->url,
+        dateRange,
+        hours,
+        location,
+        ages,
+        pricing,
+        formUrl,
+        status,
+        "slug": slug.current
+      }`,
+      {},
+      { next: { revalidate: 0 } }
+    );
+    return data ?? [];
+  } catch (error) {
+    console.error("Failed to fetch active holiday clubs:", error);
+    return [];
+  }
+}
+
 async function getHeroSlides() {
   try {
     const data = await client.fetch(`*[_type == "heroSlide"] | order(order asc) {
@@ -92,7 +118,10 @@ async function getHeroSlides() {
 }
 
 export default async function Home() {
-  const heroSlides = await getHeroSlides();
+  const [heroSlides, activeHolidayClubs] = await Promise.all([
+    getHeroSlides(),
+    getActiveHolidayClubs()
+  ]);
 
   return (
     <>
@@ -107,8 +136,10 @@ export default async function Home() {
         {/* 2. Trust & Credibility Badges */}
         <TrustSection />
 
-        {/* Summer Club Special Announcement */}
-        <SummerClubSection />
+        {/* Holiday Club Special Announcement */}
+        {activeHolidayClubs.length > 0 && (
+          <SummerClubSection clubs={activeHolidayClubs} titleOverride="Holiday Club Special Announcement" />
+        )}
 
         {/* 3. About Denise Preview */}
         <AboutPreviewSection />
