@@ -39,7 +39,7 @@ export default function Header() {
   const isHeaderLight = !isHome || scrolled;
 
   return (
-    <div className="fixed top-0 left-0 w-full z-[100] flex flex-col">
+    <div className="fixed top-0 left-0 right-0 w-full z-[100] flex flex-col overflow-hidden">
       <AnnouncementBar />
       <header
         className={`w-full transition-all duration-300 ${isHeaderLight
@@ -47,10 +47,10 @@ export default function Header() {
             : "bg-transparent py-5"
           }`}
       >
-        <div className="max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto px-6 md:px-8 lg:px-12 flex items-center justify-between">
+        <div className="max-w-7xl xl:max-w-[1360px] 2xl:max-w-[1536px] 3xl:max-w-[1720px] 4xl:max-w-[1920px] mx-auto px-4 md:px-8 lg:px-12 flex items-center justify-between gap-4 min-w-0">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 group-hover:scale-110 transition-transform duration-300">
+          <Link href="/" className="flex items-center gap-2 lg:gap-3 group shrink-0">
+            <div className="relative w-9 h-9 lg:w-10 lg:h-10 group-hover:scale-110 transition-transform duration-300 shrink-0">
               <Image
                 src={isHeaderLight ? "/black-logo.webp" : "/white-logo.webp"}
                 alt="Dees Curious Minds Logo"
@@ -59,21 +59,21 @@ export default function Header() {
                 className="object-contain"
               />
             </div>
-            <span className={`text-xl font-bold tracking-tight font-poppins transition-colors duration-300 ${isHeaderLight ? "text-text-primary" : "text-white"
+            <span className={`text-base lg:text-xl font-bold tracking-tight font-poppins transition-colors duration-300 whitespace-nowrap ${isHeaderLight ? "text-text-primary" : "text-white"
               }`}>
               Dees <span className={isHeaderLight ? "text-secondary" : "text-accent"}>Curious Minds</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 2xl:gap-8 min-w-0">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-semibold tracking-wide font-inter transition-colors duration-300 relative py-1 ${isActive
+                  className={`text-sm font-semibold tracking-wide font-inter transition-colors duration-300 relative py-1 whitespace-nowrap ${isActive
                       ? isHeaderLight
                         ? "text-primary"
                         : "text-accent"
@@ -97,10 +97,10 @@ export default function Header() {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block shrink-0">
             <Link
               href="/contact"
-              className="inline-flex items-center bg-primary hover:bg-primary-hover text-white text-sm font-semibold tracking-wide px-5 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all hover:translate-y-[-1px]"
+              className="inline-flex items-center bg-primary hover:bg-primary-hover text-white text-sm font-semibold tracking-wide px-5 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all hover:translate-y-[-1px] whitespace-nowrap"
             >
               Enquire Now
             </Link>
@@ -109,7 +109,7 @@ export default function Header() {
           {/* Mobile Menu Trigger */}
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className={`p-2 md:hidden rounded-lg transition-colors ${isHeaderLight
+            className={`p-2 lg:hidden rounded-lg transition-colors shrink-0 ${isHeaderLight
                 ? "text-text-secondary hover:text-text-primary hover:bg-slate-100"
                 : "text-white hover:text-white/80 hover:bg-white/10"
               }`}
